@@ -1,0 +1,18 @@
+version: "3.1"
+
+stories:
+
+- story: calculate
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: math_equation
+  - action: action_math_equation
+
+- story: inform
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_wikipedia
+  - action: action_get_wikipedia
+

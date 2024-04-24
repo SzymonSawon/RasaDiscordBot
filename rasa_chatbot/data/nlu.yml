@@ -1,0 +1,45 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: math_equation
+  examples: |
+    - calculate [3*1/4](equation)
+    - process [90+1*80/(4*10)](equation)
+    - compute [3*9+5/8](equation)
+
+
+- intent: get_wikipedia
+  examples: |
+    - can you tell me about [thing](information)?
+    - what do you know about [person](information)?
+    - what is [animal](information)?
+    - Do you know anything about [company](information)?
