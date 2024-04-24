@@ -2,19 +2,15 @@
 https://github.com/pyenv/pyenv?tab=readme-ov-file#other-operations
 
 # Tutorial:
-1. Initialize rasa with:
-```
-rasa init
-```
-3. Before training you should check for errors with:
+1. Before training you should check for errors with:
 ```
 rasa validate data
 ```
-3. To train model:
+2. To train model:
 ```
 rasa train
 ```
-4.  To chat with bot in shell:
+3.  To chat with bot in shell:
 ```
 rasa shell
 ```
@@ -28,9 +24,9 @@ rasa shell
     - calculate [3*1/4](equation)
     - process [90+1*80/(4*10)](equation)
     - compute [3*9+5/8](equation)
-'''
+```
 2.[Optional] Create custom action in actions/actions.py
-'''
+```
 class ActionMathEqation(Action):
 
     def name(self) -> Text:
@@ -48,7 +44,7 @@ class ActionMathEqation(Action):
             dispatcher.utter_message(text=f"Error: {e}")
 
         return []
-'''
+```
 3. Add your intents and actions to new story:
 ```
 stories:
