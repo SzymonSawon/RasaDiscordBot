@@ -4,13 +4,17 @@ https://github.com/pyenv/pyenv?tab=readme-ov-file#other-operations
 # Tutorial:
 1. Before training you should check for errors with:
 ```
-rasa validate data
+rasa data validate
 ```
 2. To train model:
 ```
 rasa train
 ```
-3.  To chat with bot in shell:
+3. In another terminal in project directory run(and don't close it):
+```
+rasa run actions
+```
+4.  To chat with bot in shell:
 ```
 rasa shell
 ```
@@ -57,3 +61,12 @@ stories:
   - action: action_math_equation
 ```
 4. Each change add to domain.yml file
+
+5. [Optional] To use variables in custom actions, you need to add variable to intent:
+```
+compute [3*9+5/8](equation)
+```
+Then add your entities and slots to domain.yml:
+```
+
+```
