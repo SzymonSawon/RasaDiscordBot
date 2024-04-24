@@ -79,3 +79,39 @@ slots:
     - type: from_entity
       entity: equation
 ```
+
+# Discord bot
+
+You have to start the Rasa api with ():
+
+```console
+rasa run --enable-api
+```
+
+Get discord bot token from [Discord Developer
+Console](https://discord.com/developers/) and then run the bot in one of the
+ways, passing the token in `DISCORD_TOKEN` enviroment variable:
+
+```console
+export DISCORD_TOKEN=...
+python discord_bot/bot.py
+```
+
+or
+
+```console
+DISCORD_TOKEN=... python discord_bot/bot.py
+```
+
+or - best for development:
+
+```console
+# do this once
+echo "DISCORD_TOKEN=..." > discord_bot/.env
+
+python discord_bot/bot.py
+```
+
+You can also specify the url of Rasa api webhook with `RASA_ENDPOINT`
+enviroment variable (default is
+`http://localhost:5005/webhooks/rest/webhook`).
