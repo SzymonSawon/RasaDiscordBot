@@ -68,5 +68,14 @@ compute [3*9+5/8](equation)
 ```
 Then add your entities and slots to domain.yml:
 ```
+entities:
+ - equation
+ - information
 
+slots:
+  equation:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: equation
 ```
