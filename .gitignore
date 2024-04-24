@@ -1,3 +1,4 @@
 my_venv
 rasa_chatbot/models
 rasa_chatbot/.rasa
+**/__pycache__/**
