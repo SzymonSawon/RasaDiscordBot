@@ -14,6 +14,50 @@ rasa validate data
 ```
 rasa train
 ```
+4.  To chat with bot in shell:
 ```
 rasa shell
 ```
+
+# Workflow:
+
+1.Create intent in data/nlu.yml
+```
+- intent: math_equation
+  examples: |
+    - calculate [3*1/4](equation)
+    - process [90+1*80/(4*10)](equation)
+    - compute [3*9+5/8](equation)
+'''
+2.[Optional] Create custom action in actions/actions.py
+'''
+class ActionMathEqation(Action):
+
+    def name(self) -> Text:
+        return "action_math_equation"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        try:
+            user_input = tracker.get_slot('equation')
+            output = eval(user_input)
+            dispatcher.utter_message(text=f"Result: {output}")
+
+        except Exception as e:
+            dispatcher.utter_message(text=f"Error: {e}")
+
+        return []
+'''
+3. Add your intents and actions to new story:
+```
+stories:
+
+- story: calculate
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: math_equation
+  - action: action_math_equation
+```
+4. Each change add to domain.yml file
