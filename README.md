@@ -49,7 +49,7 @@ class ActionMathEqation(Action):
 
         return []
 ```
-3. Add your intents and actions to new story:
+3. Add your intents and actions to new story in data/stories.yml:
 ```
 stories:
 
