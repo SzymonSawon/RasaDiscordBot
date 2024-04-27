@@ -1,3 +1,5 @@
 rasa
 bs4
 requests
+discord.py
+python-dotenv
