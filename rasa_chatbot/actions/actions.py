@@ -11,7 +11,6 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import requests
-from bs4 import BeautifulSoup
 
 
 class ActionMathEqation(Action):
@@ -44,16 +43,12 @@ class ActionGetWikipedia(Action):
         try:
             user_input = tracker.get_slot('information')
             response = requests.get(
-                f"https://en.wikipedia.org/wiki/{user_input}")
-            url = f"https://en.wikipedia.org/wiki/{user_input}"
+                f"https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exchars=300&explaintext=1&redirects=1&titles={user_input}")
             if response.status_code == 200:
-                soup = BeautifulSoup(response.text, 'html.parser')
-                paragraphs = soup.select('div.mw-parser-output > p')
-                for paragraph in paragraphs:
-                    text = paragraph.get_text().strip()
-                    if text:
-                        dispatcher.utter_message(
-                            text=f"Result: {text} and {user_input} and {url}")
+                data = response.json()
+                for page_id, page in data["query"]["pages"].items():
+                    dispatcher.utter_message(
+                        text=f"{page['extract']}\n---\nSee more: https://en.wikipedia.org/wiki/{page['title']}")
             else:
                 dispatcher.utter_message(text="Site error")
 
