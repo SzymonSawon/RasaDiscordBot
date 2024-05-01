@@ -3,32 +3,18 @@ version: "3.1"
 nlu:
 - intent: greet
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - cześć
+    - witaj
+    - siema
+    - dzień dobry
+    - dobry wieczór
 
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - żegnaj
+    - spadam
+    - idę stąd
+    - do widzenia
 
 - intent: math_equation
   examples: |
@@ -43,3 +29,294 @@ nlu:
     - what do you know about [person](information)?
     - what is [animal](information)?
     - Do you know anything about [company](information)?
+
+- intent: get_pokemon
+  examples: |
+    - Co wiesz o [Pikachu](pokemon)?
+    - Jakie masz informacje o [Charizard](pokemon)?
+    - Powiedz mi coś o [Bulbasaur](pokemon).
+    - Wiesz coś o [Squirtle](pokemon)?
+    - Co możesz powiedzieć o [Jigglypuff](pokemon)?
+    - Jakie masz informacje o [Ditto](pokemon)?
+    - Co wiesz o [Eevee](pokemon)?
+    - Co wiesz o [Mewtwo](pokemon)?
+    - Powiedz mi coś o [Snorlax](pokemon).
+    - Jakie informacje masz o [Gengar](pokemon)?
+
+- lookup: pokemon
+  examples: |
+      - Bulbasaur
+      - Ivysaur
+      - Venusaur
+      - Charmander
+      - Charmeleon
+      - Charizard
+      - Squirtle
+      - Wartortle
+      - Blastoise
+      - Caterpie
+      - Metapod
+      - Butterfree
+      - Weedle
+      - Kakuna
+      - Beedrill
+      - Pidgey
+      - Pidgeotto
+      - Pidgeot
+      - Rattata
+      - Raticate
+      - Spearow
+      - Fearow
+      - Ekans
+      - Arbok
+      - Pikachu
+      - Raichu
+      - Sandshrew
+      - Sandslash
+      - Nidorina
+      - Nidoqueen
+      - Nidoran
+      - Nidorino
+      - Nidoking
+      - Clefairy
+      - Clefable
+      - Vulpix
+      - Ninetales
+      - Jigglypuff
+      - Wigglytuff
+      - Zubat
+      - Golbat
+      - Oddish
+      - Gloom
+      - Vileplume
+      - Paras
+      - Parasect
+      - Venonat
+      - Venomoth
+      - Diglett
+      - Dugtrio
+      - Meowth
+      - Persian
+      - Psyduck
+      - Golduck
+      - Mankey
+      - Primeape
+      - Growlithe
+      - Arcanine
+      - Poliwag
+      - Poliwhirl
+      - Poliwrath
+      - Abra
+      - Kadabra
+      - Alakazam
+      - Machop
+      - Machoke
+      - Machamp
+      - Bellsprout
+      - Weepinbell
+      - Victreebel
+      - Tentacool
+      - Tentacruel
+      - Geodude
+      - Graveler
+      - Golem
+      - Ponyta
+      - Rapidash
+      - Slowpoke
+      - Slowbro
+      - Magnemite
+      - Magneton
+      - Farfetch'd
+      - Doduo
+      - Dodrio
+      - Seel
+      - Dewgong
+      - Grimer
+      - Muk
+      - Shellder
+      - Cloyster
+      - Gastly
+      - Haunter
+      - Gengar
+      - Onix
+      - Drowzee
+      - Hypno
+      - Krabby
+      - Kingler
+      - Voltorb
+      - Electrode
+      - Exeggcute
+      - Exeggutor
+      - Cubone
+      - Marowak
+      - Hitmonlee
+      - Hitmonchan
+      - Lickitung
+      - Koffing
+      - Weezing
+      - Rhyhorn
+      - Rhydon
+      - Chansey
+      - Tangela
+      - Kangaskhan
+      - Horsea
+      - Seadra
+      - Goldeen
+      - Seaking
+      - Staryu
+      - Starmie
+      - Mr. Mime
+      - Scyther
+      - Jynx
+      - Electabuzz
+      - Magmar
+      - Pinsir
+      - Tauros
+      - Magikarp
+      - Gyarados
+      - Lapras
+      - Ditto
+      - Eevee
+      - Vaporeon
+      - Jolteon
+      - Flareon
+      - Porygon
+      - Omanyte
+      - Omastar
+      - Kabuto
+      - Kabutops
+      - Aerodactyl
+      - Snorlax
+      - Articuno
+      - Zapdos
+      - Moltres
+      - Dratini
+      - Dragonair
+      - Dragonite
+      - Mewtwo
+      - Mew
+
+- intent: add_task
+  examples: |
+    - Dodaj nowe zadanie
+    - Chcę dodać zadanie do listy
+    - Mam nowe zadanie
+
+- intent: give_task
+  examples: |
+    - Kup mleko
+    - Napisz raport
+    - Zrób pranie
+    - Przygotuj obiad
+    - Odkurz mieszkanie
+    - Zaplanuj spotkanie
+    - Zamów bilety na koncert
+    - Zaktualizuj oprogramowanie
+    - Przeczytaj książkę
+    - Pobiegaj
+    - Zrób zakupy spożywcze
+    - Zaprojektuj nowy projekt
+    - Zaktualizuj stronę internetową
+    - Zapisz się na kurs online
+    - Sprawdź pocztę
+    - Napisz wiadomość e-mail
+    - Wymyśl nowy pomysł na projekt
+    - Zamów kwiaty na urodziny
+    - Przygotuj prezentację
+    - Zapisz się na siłownię
+    - Wybierz się na spacer
+    - Napisz artykuł
+    - Zarezerwuj hotel na wakacje
+    - Zaktualizuj CV
+    - Wypierz ubrania
+    - Zarejestruj się na konferencję
+    - Posprzątaj kuchnię
+    - Zrób kawę
+    - Zapisz się do lekarza
+    - Sprawdź wyniki egzaminu
+    - Wykonaj telefon
+    - Uporządkuj dokumenty
+    - Obejrzyj film
+    - Zamów jedzenie na wynos
+    - Zarezerwuj stolik w restauracji
+    - Napisz nowy rozdział książki
+    - Zaplanuj harmonogram na tydzień
+    - Opracuj plan na weekend
+    - Ucz się języka obcego
+    - Wyślij kartkę urodzinową
+    - Kup 2 litry mleka
+    - Napisz 5 raportów
+    - Zrób pranie 3 razy w tygodniu
+    - Przygotuj obiad dla 4 osób
+    - Zamów 10 biletów na koncert
+    - Przeczytaj 3 rozdziały książki
+    - Zaktualizuj stronę do wersji 2.1
+    - Obejrzyj 2 filmy wieczorem
+    - Przebiegnij 5 kilometrów
+    - Wypierz 4 koszule
+    - Posprzątaj mieszkanie w 30 minut
+    - Zamów 2 pizze
+    - Odkurzaj co najmniej 2 razy w tygodniu
+    - Zaplanuj 3 spotkania w tym miesiącu
+    - Napisz 2 strony artykułu
+    - Zarezerwuj 3 pokoje w hotelu
+    - Zrób 50 pompek
+    - Ucz się 1 godziny dziennie
+    - Obejrzyj 4 odcinki serialu
+    - Sprawdź pocztę co 30 minut
+    - Przygotuj prezentację do 12:00
+    - Obejrzyj 10 filmów w miesiącu
+    - Wykonaj 3 telefony dzisiaj
+    - Kup 5 różnych rodzajów owoców
+
+- intent: list_tasks
+  examples: |
+    - Jakie mam zadania do zrobienia?
+    - Pokaż listę moich zadań
+    - Co mam na liście zadań?
+
+- intent: delete_task
+  examples: |
+    - Usuń to zadanie
+    - Chcę usunąć zadanie z listy
+    - Zdejmij zadanie z mojej listy
+
+- intent: ask_time_management_tips
+  examples: |
+    - Jak mogę lepiej zarządzać czasem?
+    - Podaj wskazówki dotyczące zarządzania czasem
+
+- intent: suggest_breaks
+  examples: |
+    - Jestem zmęczony
+    - Nie dam rady
+    - Cz potrzebuję przerwy?
+    - Czy przerwy są ważne?
+
+- intent: ask_productivity_tips
+  examples: |
+    - Jak być bardziej produktywnym?
+    - Porady dotyczące produktywności
+    - Co zrobić, by być bardziej wydajnym?
+
+- intent: plan_day
+  examples: |
+    - Pomóż mi zaplanować mój dzień
+    - Jak zaplanować dzień?
+    - Chcę ułożyć plan dnia
+
+
+- intent: suggest_pomodoro
+  examples: |
+    - Co to jest metoda Pomodoro?
+    - Jak używać metody Pomodoro?
+    - Pomóż mi zacząć Pomodoro
+
+
+- intent: offer_motivation
+  examples: |
+    - Potrzebuję motywacji
+    - Daj mi motywujący cytat
+    - Motywuj mnie
+
+

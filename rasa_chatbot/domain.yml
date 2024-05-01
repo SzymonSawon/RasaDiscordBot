@@ -5,21 +5,72 @@ intents:
   - goodbye
   - math_equation
   - get_wikipedia
+  - add_task
+  - list_tasks
+  - delete_task
+  - mark_task_complete
+  - ask_time_management_tips
+  - suggest_breaks
+  - ask_productivity_tips
+  - suggest_pomodoro
+  - check_task_progress
+  - offer_motivation
+  - give_task
+  - get_pokemon
 
 actions:
   - action_math_equation
   - action_get_wikipedia
+  - action_add_task
+  - action_list_tasks
+  - action_mark_task_complete
+  - action_get_pokemon
+
+
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Cześć, co chcesz dzisiaj robić?"
 
   utter_goodbye:
-    - text: "Bye"
+    - text: "Pa pa"
+
+  utter_add_task:
+    - text: "Dodano zadanie: {task_name}"
+
+  utter_list_tasks:
+    - text: "Twoje zadania to: {task_list}"
+
+  utter_delete_task:
+    - text: "Usunięto zadanie: {task_name}"
+
+  utter_mark_task_complete:
+    - text: "Zadanie oznaczone jako zakończone: {task_name}"
+
+  utter_get_task:
+    - text: "Jakie zadanie chciałbyś dodać?"
+
+  utter_ask_time_management_tips:
+    - text: "Oto kilka wskazówek dotyczących zarządzania czasem"
+
+  utter_suggest_breaks:
+    - text: "Przerwy są ważne! Rób je regularnie, np. co 25 minut po 5 minut, oraz co 90 minut po 10 minut"
+
+  utter_ask_productivity_tips:
+    - text: "Oto kilka porad dotyczących produktywności"
+
+  utter_suggest_pomodoro:
+    - text: "Metoda Pomodoro polega na 25-minutowych blokach pracy z krótkimi przerwami. Chcesz ją wypróbować?"
+
+  utter_offer_motivation:
+    - text: "Oto motywujący cytat: 'Sukces to zdolność przejścia od porażki do porażki bez utraty entuzjazmu.' - Winston Churchill"
 
 entities:
  - equation
  - information
+ - task_name
+ - task_list
+ - pokemon
 
 slots:
   equation:
@@ -32,6 +83,24 @@ slots:
     mappings:
     - type: from_entity
       entity: information
+      auto_fill: True
+  task_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: task_name
+      auto_fill: True
+  task_list:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: task_list
+      auto_fill: True
+  pokemon:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: pokemon
       auto_fill: True
 
 

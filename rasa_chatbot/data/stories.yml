@@ -16,3 +16,32 @@ stories:
   - intent: get_wikipedia
   - action: action_get_wikipedia
 
+
+- story: Adding a task
+  steps:
+    - intent: add_task
+    - action: utter_get_task
+    - intent: give_task
+    - action: action_add_task
+
+- story: Listing tasks
+  steps:
+    - intent: list_tasks
+    - action: action_list_tasks
+
+
+- story: How to be productive
+  steps:
+    - intent: ask_productivity_tips
+    - action: utter_ask_productivity_tips
+
+
+- story: Time management tips
+  steps:
+    - intent: ask_time_management_tips
+    - action: utter_ask_time_management_tips
+
+- story: Pokemon
+  steps:
+    - intent: get_pokemon
+    - action: action_get_pokemon

@@ -8,7 +8,7 @@ assistant_id: 20240422-170849-coal-cumin
 
 # Configuration for Rasa NLU.
 # https://rasa.com/docs/rasa/nlu/components/
-language: en
+language: pl
 
 pipeline: null
 # # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
