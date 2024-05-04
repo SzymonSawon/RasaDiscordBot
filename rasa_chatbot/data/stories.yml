@@ -20,9 +20,16 @@ stories:
 - story: Adding a task
   steps:
     - intent: add_task
-    - action: utter_get_task
+    - action: utter_get_task_to_remove
     - intent: give_task
     - action: action_add_task
+        
+- story: Remove a task
+  steps:
+    - intent: delete_task
+    - action: utter_get_task
+    - intent: give_task
+    - action: action_remove_task
 
 - story: Listing tasks
   steps:
@@ -45,3 +52,62 @@ stories:
   steps:
     - intent: get_pokemon
     - action: action_get_pokemon
+
+- story: Motivational quote generator
+  steps:
+    - intent: offer_motivation
+    - action: action_get_quote
+
+
+
+- story: Pomodoro timer confirm
+  steps:
+    - intent: pomodoro
+    - action: utter_suggest_pomodoro
+    - intent: confirm
+    - action: utter_pomodoro_ready
+    - intent: confirm
+    - checkpoint: pomodoro_start
+
+- story: Pomodoro timer not ready
+  steps:
+    - intent: pomodoro
+    - action: utter_suggest_pomodoro
+    - intent: confirm
+    - action: utter_pomodoro_ready
+    - intent: deny
+    - action: utter_pomodoro_ready_ready
+    - intent: confirm
+    - checkpoint: pomodoro_start
+
+- story: Pomodoro timer not ready deny
+  steps:
+    - intent: pomodoro
+    - action: utter_suggest_pomodoro
+    - intent: confirm
+    - action: utter_pomodoro_ready
+    - intent: deny
+    - action: utter_pomodoro_ready_ready
+    - intent: deny
+    - action: utter_deny
+
+- story: Pomodoro timer deny
+  steps:
+    - intent: pomodoro
+    - action: utter_suggest_pomodoro
+    - intent: deny
+    - action: utter_deny
+
+- story: Pomodoro start
+  steps:
+    - checkpoint: pomodoro_start
+    - action: action_pomodoro
+    - action: utter_break_pomodoro
+    - intent: confirm
+    - action: action_pomodoro_break
+    - action: utter_end_pomodoro
+
+- story: Deny
+  steps:
+    - intent: deny
+    - action: utter_deny

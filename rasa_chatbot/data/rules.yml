@@ -6,3 +6,10 @@ rules:
   steps:
   - intent: goodbye
   - action: utter_goodbye
+
+- rule: pomodoro r1
+  steps:
+    - action: utter_suggest_pomodoro
+    - intent: confirm
+    - action: utter_pomodoro_ready
+

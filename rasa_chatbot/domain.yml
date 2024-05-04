@@ -17,14 +17,21 @@ intents:
   - offer_motivation
   - give_task
   - get_pokemon
+  - pomodoro
+  - confirm
+  - deny
 
 actions:
   - action_math_equation
   - action_get_wikipedia
   - action_add_task
+  - action_remove_task
   - action_list_tasks
   - action_mark_task_complete
   - action_get_pokemon
+  - action_get_quote
+  - action_pomodoro
+  - action_pomodoro_break
 
 
 
@@ -34,6 +41,9 @@ responses:
 
   utter_goodbye:
     - text: "Pa pa"
+
+  utter_thank:
+    - text: "Nie ma problemu, możesz zawsze na mnie liczyć"
 
   utter_add_task:
     - text: "Dodano zadanie: {task_name}"
@@ -50,6 +60,9 @@ responses:
   utter_get_task:
     - text: "Jakie zadanie chciałbyś dodać?"
 
+  utter_get_task_to_remove:
+    - text: "Jakie zadanie chciałbyś usunąć?"
+
   utter_ask_time_management_tips:
     - text: "Oto kilka wskazówek dotyczących zarządzania czasem"
 
@@ -62,8 +75,26 @@ responses:
   utter_suggest_pomodoro:
     - text: "Metoda Pomodoro polega na 25-minutowych blokach pracy z krótkimi przerwami. Chcesz ją wypróbować?"
 
+  utter_enable_pomodoro:
+    - text: "Włączam pomodoro na 25 minut."
+  
+  utter_end_pomodoro:
+    - text: "Pomodoro zakończone!"
+
+  utter_break_pomodoro:
+    - text: "Czy chcesz rozpocząć przerwę?"
+
+  utter_pomodoro_ready:
+    - text: "Czy jesteś na to gotowy? Jeśli tak, to odpalę pomodoro, ale nie martw się, przypomnę ci o rozpoczęciu kolejnego cyklu lub przerwy."
+
+  utter_pomodoro_ready_ready:
+    - text: "A teraz?"
+
   utter_offer_motivation:
     - text: "Oto motywujący cytat: 'Sukces to zdolność przejścia od porażki do porażki bez utraty entuzjazmu.' - Winston Churchill"
+
+  utter_deny:
+    - text: "Może innym razem"
 
 entities:
  - equation

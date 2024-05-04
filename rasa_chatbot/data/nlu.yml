@@ -16,6 +16,27 @@ nlu:
     - idę stąd
     - do widzenia
 
+- intent: thank
+  examples: |
+    - dziękuję
+    - było miłó
+    - przydałeś się
+    - jesteś super
+
+- intent: confirm
+  examples: |
+    - tak
+    - tak, poproszę
+    - byłoby miło
+    - bardzo
+
+- intent: deny
+  examples: |
+    - nie
+    - na pewno nie
+    - może innym razem
+    - kiedy indziej 
+
 - intent: math_equation
   examples: |
     - calculate [3*1/4](equation)
@@ -275,11 +296,16 @@ nlu:
     - Pokaż listę moich zadań
     - Co mam na liście zadań?
 
+
 - intent: delete_task
   examples: |
     - Usuń to zadanie
     - Chcę usunąć zadanie z listy
     - Zdejmij zadanie z mojej listy
+    - Usuń zadanie
+    - Pozbądź się zadania
+    - Wywal to gówno
+    - Wywal to zadanie
 
 - intent: ask_time_management_tips
   examples: |
@@ -306,11 +332,14 @@ nlu:
     - Chcę ułożyć plan dnia
 
 
-- intent: suggest_pomodoro
+- intent: pomodoro
   examples: |
     - Co to jest metoda Pomodoro?
     - Jak używać metody Pomodoro?
     - Pomóż mi zacząć Pomodoro
+    - Tryb pomodoro
+    - Włącz pomodoro
+    - Potrzebuję pomodoro
 
 
 - intent: offer_motivation
@@ -318,5 +347,8 @@ nlu:
     - Potrzebuję motywacji
     - Daj mi motywujący cytat
     - Motywuj mnie
+    - Podaj mi jakiś cytat
+    - Potrzebuję cytatu
+    - Znasz jakieś motywujące cytaty?
 
 

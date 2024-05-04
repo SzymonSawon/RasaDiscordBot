@@ -14,6 +14,7 @@ import requests
 
 import json
 from rasa_sdk.events import SlotSet
+import time
 
 # Tests
 from pathlib import Path
@@ -83,12 +84,43 @@ class ActionAddTask(Action):
             data = json.load(file)
 
         task = tracker.latest_message['text']
-        data["tasks"].append({"task": task, "state": "wip"})
+        data["tasks"].append({"task": task})
 
         with open("./tasks.json", "w") as file:
             data = json.dump(data, file)
 
         dispatcher.utter_message(text=f"Dodano zadanie: {task}")
+
+        return []
+
+
+class ActionRemoveTask(Action):
+    def name(self) -> Text:
+        return "action_remove_task"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        path = Path("./data/tasks.json")
+
+        if not path.exists():  # Jeśli plik nie istnieje, utwórz go
+            path.parent.mkdir(parents=True, exist_ok=True)
+            with open(path, "w") as file:
+                json.dump({"tasks": []}, file, indent=2)
+
+        with open("./tasks.json", "r") as file:
+            data = json.load(file)
+
+        task = tracker.latest_message['text']
+        for i in data["tasks"]:
+            if (i["task"] == task):
+                data["tasks"].remove(i)
+
+        with open("./tasks.json", "w") as file:
+            data = json.dump(data, file)
+
+        dispatcher.utter_message(text=f"Usunięto zadanie: {task}")
 
         return []
 
@@ -110,10 +142,36 @@ class ActionListTasks(Action):
 
         task_names = [task["task"] for task in data["tasks"]]
 
-        task_list_text = ", ".join(task_names)
+        task_list_text = "\n \u2022 " + " \n \u2022 ".join(task_names)
 
         dispatcher.utter_message(text=f"Twoje zadania to: {task_list_text}")
         return [SlotSet("task_list", task_list_text)]
+
+
+class ActionPomodoro(Action):
+    def name(self) -> str:
+        return "action_pomodoro"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker, domain):
+        pom = 5
+        while pom:
+            mins, secs = divmod(pom, 60)
+            time.sleep(1)
+            pom -= 1
+        return []
+
+
+class ActionPomodoroBreak(Action):
+    def name(self) -> str:
+        return "action_pomodoro_break"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker, domain):
+        pom = 2
+        while pom:
+            mins, secs = divmod(pom, 60)
+            time.sleep(1)
+            pom -= 1
+        return []
 
 
 class ActionGetPokemon(Action):
@@ -122,6 +180,10 @@ class ActionGetPokemon(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker, domain):
         user_input = tracker.get_slot('pokemon')
+        if (user_input is None):
+            dispatcher.utter_message(
+                text="Nie ma takiego pokemona")
+            return []
         url = f"https://pokeapi.co/api/v2/pokemon/{user_input.lower()}"
         response = requests.get(url)
         if response.status_code == 200:
@@ -140,4 +202,22 @@ class ActionGetPokemon(Action):
                          \nTyp: {', '.join(pokemon_info["types"])}
                          """)
         else:
-            dispatcher.utter_message(text=f"Nie udało się dotrzeć do informacji")
+            dispatcher.utter_message(
+                text="Nie udało się dotrzeć do informacji")
+
+
+class ActionGetQuote(Action):
+    def name(self) -> str:
+        return "action_get_quote"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker, domain):
+        url = "https://api.quotable.io/quotes/random"
+        response = requests.get(url)
+        if response.status_code == 200:
+            quote_api = response.json()
+
+            dispatcher.utter_message(
+                text=f"Cytat specjalnie dla ciebie: {quote_api[0]['content']} \nAutor: {quote_api[0]['author']}")
+        else:
+            dispatcher.utter_message(
+                text="Nie udało się dotrzeć do informacji")
