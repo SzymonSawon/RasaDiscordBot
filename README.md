@@ -10,7 +10,6 @@ https://github.com/pyenv/pyenv?tab=readme-ov-file#other-operations
    - Usuń zadanie
    - Kup mleko
    - Pokaż zadania
-   - Kup mleko
 2. 1st gen Pokemon information, example: "Co wiesz o [pokemon_name]?"
 3. Motivational quotes, example: "Potrzebuję motywacji"
 4. Pomodoro
