@@ -1,6 +1,20 @@
 # Python 3.9.19:
 https://github.com/pyenv/pyenv?tab=readme-ov-file#other-operations
 
+# Features:
+1. You can add, delete and list all tasks. Exmaple:
+   - Dodaj zadanie
+   - Kup mleko
+   - Pokaż zadania
+   - Kup mleko
+   - Usuń zadanie
+   - Kup mleko
+   - Pokaż zadania
+   - Kup mleko
+2. 1st gen Pokemon information, example: "Co wiesz o [pokemon_name]?"
+3. Motivational quotes, example: "Potrzebuję motywacji"
+4. Pomodoro
+
 # Tutorial:
 1. Before training you should check for errors with:
 ```
