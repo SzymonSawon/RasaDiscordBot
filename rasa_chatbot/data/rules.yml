@@ -13,3 +13,50 @@ rules:
     - intent: confirm
     - action: utter_pomodoro_ready
 
+- rule: pomodoro r2
+  steps:
+    - action: utter_pomodoro_ready
+    - intent: confirm
+    - action: action_pomodoro
+
+- rule: laptop r1
+  steps:
+    - action: utter_laptop_greet
+    - intent: confirm
+    - action: utter_ask_gaming
+
+- rule: laptop r2
+  steps:
+    - action: utter_ask_gaming
+    - intent: deny
+    - action: utter_ask_portable
+- rule: laptop r3
+  steps:
+    - action: utter_ask_portable
+    - intent: deny
+    - action: utter_ask_budget
+- rule: laptop r4
+  steps:
+    - action: utter_ask_budget
+    - intent: deny
+    - action: utter_recommend_general_laptop
+    - action: utter_goodbye
+- rule: laptop r5
+  steps:
+    - action: utter_ask_gaming
+    - intent: confirm
+    - action: utter_recommend_gaming_laptop
+    - action: utter_goodbye
+- rule: laptop r6
+  steps:
+    - action: utter_ask_portable
+    - intent: confirm
+    - action: utter_recommend_portable_laptop
+    - action: utter_goodbye
+- rule: laptop r7
+  steps:
+    - action: utter_ask_budget
+    - intent: confirm
+    - action: utter_recommend_budget_laptop
+    - action: utter_goodbye
+

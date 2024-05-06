@@ -19,6 +19,7 @@ nlu:
 - intent: thank
   examples: |
     - dziękuję
+    - dzięki
     - było miłó
     - przydałeś się
     - jesteś super
@@ -29,6 +30,9 @@ nlu:
     - tak, poproszę
     - byłoby miło
     - bardzo
+    - oczywiście
+    - jasne
+    - pewnie
 
 - intent: deny
   examples: |
@@ -36,20 +40,9 @@ nlu:
     - na pewno nie
     - może innym razem
     - kiedy indziej 
-
-- intent: math_equation
-  examples: |
-    - calculate [3*1/4](equation)
-    - process [90+1*80/(4*10)](equation)
-    - compute [3*9+5/8](equation)
-
-
-- intent: get_wikipedia
-  examples: |
-    - can you tell me about [thing](information)?
-    - what do you know about [person](information)?
-    - what is [animal](information)?
-    - Do you know anything about [company](information)?
+    - nie sądzę
+    - nie zgadzam się
+    - raczej nie
 
 - intent: get_pokemon
   examples: |
@@ -295,6 +288,7 @@ nlu:
     - Jakie mam zadania do zrobienia?
     - Pokaż listę moich zadań
     - Co mam na liście zadań?
+    - Moje zadanka
 
 
 - intent: delete_task
@@ -306,31 +300,6 @@ nlu:
     - Pozbądź się zadania
     - Wywal to gówno
     - Wywal to zadanie
-
-- intent: ask_time_management_tips
-  examples: |
-    - Jak mogę lepiej zarządzać czasem?
-    - Podaj wskazówki dotyczące zarządzania czasem
-
-- intent: suggest_breaks
-  examples: |
-    - Jestem zmęczony
-    - Nie dam rady
-    - Cz potrzebuję przerwy?
-    - Czy przerwy są ważne?
-
-- intent: ask_productivity_tips
-  examples: |
-    - Jak być bardziej produktywnym?
-    - Porady dotyczące produktywności
-    - Co zrobić, by być bardziej wydajnym?
-
-- intent: plan_day
-  examples: |
-    - Pomóż mi zaplanować mój dzień
-    - Jak zaplanować dzień?
-    - Chcę ułożyć plan dnia
-
 
 - intent: pomodoro
   examples: |
@@ -351,4 +320,12 @@ nlu:
     - Potrzebuję cytatu
     - Znasz jakieś motywujące cytaty?
 
+- intent: laptop_greet
+  examples: |
+    - cześć, potrzebuję laptopa
+    - cześć, potrzebuję komputera
+    - witaj, czy znasz się na komputerach?
+    - siema, masz może lapka?
+    - dzień dobry, czy można dostać poradę dotyczącą laptopa?
+    - dobry wieczór, powiesz mi coś o laptopach?
 

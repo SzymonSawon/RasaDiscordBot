@@ -1,16 +1,1 @@
-{
-  "tasks": [
-    {
-      "task": "TEST",
-      "completed": "completed"
-    },
-    {
-      "task": "TEST2",
-      "state": "wip"
-    }
-  ]
-}
-
-
-
-
+{"s4wo": {"tasks": [{"task": "nie interesuj si\u0119"}]}, "ieznany u\u017cytkownik": {"tasks": []}}

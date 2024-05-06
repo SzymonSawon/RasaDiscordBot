@@ -2,32 +2,32 @@ version: "3.1"
 
 stories:
 
-- story: calculate
+- story: st_greet
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: math_equation
-  - action: action_math_equation
 
-- story: inform
+- story: st_goodbye
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: get_wikipedia
-  - action: action_get_wikipedia
+  - intent: goodbye
+  - action: utter_goodbye
 
+- story: thank
+  steps:
+  - intent: thank
+  - action: utter_thank
 
 - story: Adding a task
   steps:
     - intent: add_task
-    - action: utter_get_task_to_remove
+    - action: utter_get_task
     - intent: give_task
     - action: action_add_task
         
 - story: Remove a task
   steps:
     - intent: delete_task
-    - action: utter_get_task
+    - action: utter_get_task_to_remove
     - intent: give_task
     - action: action_remove_task
 
@@ -35,18 +35,6 @@ stories:
   steps:
     - intent: list_tasks
     - action: action_list_tasks
-
-
-- story: How to be productive
-  steps:
-    - intent: ask_productivity_tips
-    - action: utter_ask_productivity_tips
-
-
-- story: Time management tips
-  steps:
-    - intent: ask_time_management_tips
-    - action: utter_ask_time_management_tips
 
 - story: Pokemon
   steps:
@@ -58,8 +46,6 @@ stories:
     - intent: offer_motivation
     - action: action_get_quote
 
-
-
 - story: Pomodoro timer confirm
   steps:
     - intent: pomodoro
@@ -67,29 +53,7 @@ stories:
     - intent: confirm
     - action: utter_pomodoro_ready
     - intent: confirm
-    - checkpoint: pomodoro_start
-
-- story: Pomodoro timer not ready
-  steps:
-    - intent: pomodoro
-    - action: utter_suggest_pomodoro
-    - intent: confirm
-    - action: utter_pomodoro_ready
-    - intent: deny
-    - action: utter_pomodoro_ready_ready
-    - intent: confirm
-    - checkpoint: pomodoro_start
-
-- story: Pomodoro timer not ready deny
-  steps:
-    - intent: pomodoro
-    - action: utter_suggest_pomodoro
-    - intent: confirm
-    - action: utter_pomodoro_ready
-    - intent: deny
-    - action: utter_pomodoro_ready_ready
-    - intent: deny
-    - action: utter_deny
+    - action: action_pomodoro
 
 - story: Pomodoro timer deny
   steps:
@@ -98,16 +62,61 @@ stories:
     - intent: deny
     - action: utter_deny
 
-- story: Pomodoro start
+- story: Pomodoro timer confirm not ready
   steps:
-    - checkpoint: pomodoro_start
-    - action: action_pomodoro
-    - action: utter_break_pomodoro
+    - intent: pomodoro
+    - action: utter_suggest_pomodoro
     - intent: confirm
-    - action: action_pomodoro_break
-    - action: utter_end_pomodoro
-
-- story: Deny
-  steps:
+    - action: utter_pomodoro_ready
     - intent: deny
     - action: utter_deny
+
+- story: Laptop Recommendation
+  steps:
+    - intent: laptop_greet
+    - action: utter_laptop_greet
+    - intent: confirm
+    - action: utter_ask_gaming
+    - intent: confirm
+    - action: utter_recommend_gaming_laptop
+    - action: utter_goodbye
+
+- story: Laptop Recommendation - Portable
+  steps:
+    - intent: laptop_greet
+    - action: utter_laptop_greet
+    - intent: confirm
+    - action: utter_ask_gaming
+    - intent: deny
+    - action: utter_ask_portable
+    - intent: confirm
+    - action: utter_recommend_portable_laptop
+    - action: utter_goodbye
+
+- story: Laptop Recommendation - Budget
+  steps:
+    - intent: laptop_greet
+    - action: utter_laptop_greet
+    - intent: confirm
+    - action: utter_ask_gaming
+    - intent: deny
+    - action: utter_ask_portable
+    - intent: deny
+    - action: utter_ask_budget
+    - intent: confirm
+    - action: utter_recommend_budget_laptop
+    - action: utter_goodbye
+
+- story: Laptop Recommendation - General
+  steps:
+    - intent: laptop_greet
+    - action: utter_laptop_greet
+    - intent: confirm
+    - action: utter_ask_gaming
+    - intent: deny
+    - action: utter_ask_portable
+    - intent: deny
+    - action: utter_ask_budget
+    - intent: deny
+    - action: utter_recommend_general_laptop
+    - action: utter_goodbye

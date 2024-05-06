@@ -19,52 +19,6 @@ import time
 # Tests
 from pathlib import Path
 
-
-class ActionMathEqation(Action):
-
-    def name(self) -> Text:
-        return "action_math_equation"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        try:
-            user_input = tracker.get_slot('equation')
-            output = eval(user_input)
-            dispatcher.utter_message(text=f"Result: {output}")
-
-        except Exception as e:
-            dispatcher.utter_message(text=f"Error: {e}")
-
-        return []
-
-
-class ActionGetWikipedia(Action):
-
-    def name(self) -> Text:
-        return "action_get_wikipedia"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        try:
-            user_input = tracker.get_slot('information')
-            response = requests.get(
-                f"https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exchars=300&explaintext=1&redirects=1&titles={user_input}")
-            if response.status_code == 200:
-                data = response.json()
-                for page_id, page in data["query"]["pages"].items():
-                    dispatcher.utter_message(
-                        text=f"{page['extract']}\n---\nSee more: https://en.wikipedia.org/wiki/{page['title']}")
-            else:
-                dispatcher.utter_message(text="Site error")
-
-        except Exception as e:
-            dispatcher.utter_message(text=f"Error: {e}")
-
-        return []
-
-
 class ActionAddTask(Action):
     def name(self) -> Text:
         return "action_add_task"
@@ -74,19 +28,22 @@ class ActionAddTask(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         path = Path("./data/tasks.json")
+        metadata = tracker.latest_message.get("metadata", {})
+        user_name = metadata.get("user_name", "nieznany użytkownik")
+        if not path.exists():
+            dispatcher.utter_message(text="Nie masz jeszcze zadań")
 
-        if not path.exists():  # Jeśli plik nie istnieje, utwórz go
-            path.parent.mkdir(parents=True, exist_ok=True)
-            with open(path, "w") as file:
-                json.dump({"tasks": []}, file, indent=2)
 
-        with open("./tasks.json", "r") as file:
+        with open("./data/tasks.json", "r") as file:
             data = json.load(file)
 
         task = tracker.latest_message['text']
-        data["tasks"].append({"task": task})
+        if str(user_name)[1:] not in data:
+            data.update({str(user_name)[1:]:{"tasks": [{"task": task}]}})
+        else:
+            data[str(user_name)[1:]]["tasks"].append({"task": task})
 
-        with open("./tasks.json", "w") as file:
+        with open("./data/tasks.json", "w") as file:
             data = json.dump(data, file)
 
         dispatcher.utter_message(text=f"Dodano zadanie: {task}")
@@ -103,21 +60,25 @@ class ActionRemoveTask(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         path = Path("./data/tasks.json")
+        metadata = tracker.latest_message.get("metadata", {})
+        user_name = metadata.get("user_name", "nieznany użytkownik")
+        if not path.exists():
+            dispatcher.utter_message(text="Nie masz jeszcze zadań")
 
-        if not path.exists():  # Jeśli plik nie istnieje, utwórz go
-            path.parent.mkdir(parents=True, exist_ok=True)
-            with open(path, "w") as file:
-                json.dump({"tasks": []}, file, indent=2)
 
-        with open("./tasks.json", "r") as file:
+        with open("./data/tasks.json", "r") as file:
             data = json.load(file)
 
-        task = tracker.latest_message['text']
-        for i in data["tasks"]:
-            if (i["task"] == task):
-                data["tasks"].remove(i)
+        if str(user_name)[1:] not in data:
+            dispatcher.utter_message(text="Nie masz jeszcze zadań")
+            return []
+        else:
+            task = tracker.latest_message['text']
+            for i in data[str(user_name)[1:]]["tasks"]:
+                if (i["task"] == task):
+                    data[str(user_name)[1:]]["tasks"].remove(i)
 
-        with open("./tasks.json", "w") as file:
+        with open("./data/tasks.json", "w") as file:
             data = json.dump(data, file)
 
         dispatcher.utter_message(text=f"Usunięto zadanie: {task}")
@@ -132,15 +93,22 @@ class ActionListTasks(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker, domain):
         path = Path("./data/tasks.json")
 
+        metadata = tracker.latest_message.get("metadata", {})
+        user_name = metadata.get("user_name", "nieznany użytkownik")
+
         if not path.exists():
             path.parent.mkdir(parents=True, exist_ok=True)
             with open(path, "w") as file:
                 json.dump({"tasks": []}, file, indent=2)
 
-        with open("./tasks.json", "r") as file:
+        with open("./data/tasks.json", "r") as file:
             data = json.load(file)
 
-        task_names = [task["task"] for task in data["tasks"]]
+        if str(user_name)[1:] not in data:
+            dispatcher.utter_message(text="Nie masz jeszcze zadań")
+            return []
+        else:
+            task_names = [task["task"] for task in data[str(user_name)[1:]]["tasks"]]
 
         task_list_text = "\n \u2022 " + " \n \u2022 ".join(task_names)
 
@@ -153,24 +121,22 @@ class ActionPomodoro(Action):
         return "action_pomodoro"
 
     def run(self, dispatcher: CollectingDispatcher, tracker, domain):
-        pom = 5
-        while pom:
-            mins, secs = divmod(pom, 60)
-            time.sleep(1)
-            pom -= 1
+        command = {
+                "content": "!timer"
+                }
+        response = requests.post("https://discordapp.com/api/webhooks/1236597900721520713/w96KltXMAgGXJGUv6sydNZVXevKV_CMcWisz5DICMWhMUwl4V3OoleFvOCoMis98Zi-j", json=command)
         return []
 
 
 class ActionPomodoroBreak(Action):
     def name(self) -> str:
-        return "action_pomodoro_break"
+        return "action_pomodoro"
 
     def run(self, dispatcher: CollectingDispatcher, tracker, domain):
-        pom = 2
-        while pom:
-            mins, secs = divmod(pom, 60)
-            time.sleep(1)
-            pom -= 1
+        command = {
+                "content": "!timer"
+                }
+        response = requests.post("https://discordapp.com/api/webhooks/1236597900721520713/w96KltXMAgGXJGUv6sydNZVXevKV_CMcWisz5DICMWhMUwl4V3OoleFvOCoMis98Zi-j", json=command)
         return []
 
 
@@ -196,10 +162,11 @@ class ActionGetPokemon(Action):
                 "types": [type_data["type"]["name"] for type_data in pokemon_api["types"]]
             }
             dispatcher.utter_message(
-                text=f"""\nNazwa: {pokemon_info["name"]}
-                         \nWzrost: {pokemon_info["height"]}
-                         \nWaga: {pokemon_info["weight"]}
-                         \nTyp: {', '.join(pokemon_info["types"])}
+                    text=f"""Twój pokemon:
+    \u2022 Nazwa: {pokemon_info["name"]}
+    \u2022 Wzrost: {pokemon_info["height"]}
+    \u2022 Waga: {pokemon_info["weight"]}
+    \u2022 Typ: {', '.join(pokemon_info["types"])}
                          """)
         else:
             dispatcher.utter_message(

@@ -3,27 +3,19 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - math_equation
-  - get_wikipedia
   - add_task
   - list_tasks
   - delete_task
-  - mark_task_complete
-  - ask_time_management_tips
-  - suggest_breaks
-  - ask_productivity_tips
-  - suggest_pomodoro
-  - check_task_progress
   - offer_motivation
   - give_task
   - get_pokemon
   - pomodoro
   - confirm
   - deny
+  - thank
+  - laptop_greet
 
 actions:
-  - action_math_equation
-  - action_get_wikipedia
   - action_add_task
   - action_remove_task
   - action_list_tasks
@@ -40,22 +32,10 @@ responses:
   - text: "Cześć, co chcesz dzisiaj robić?"
 
   utter_goodbye:
-    - text: "Pa pa"
+    - text: "Mam nadzieję, że Ci pomogłem."
 
   utter_thank:
     - text: "Nie ma problemu, możesz zawsze na mnie liczyć"
-
-  utter_add_task:
-    - text: "Dodano zadanie: {task_name}"
-
-  utter_list_tasks:
-    - text: "Twoje zadania to: {task_list}"
-
-  utter_delete_task:
-    - text: "Usunięto zadanie: {task_name}"
-
-  utter_mark_task_complete:
-    - text: "Zadanie oznaczone jako zakończone: {task_name}"
 
   utter_get_task:
     - text: "Jakie zadanie chciałbyś dodać?"
@@ -63,38 +43,38 @@ responses:
   utter_get_task_to_remove:
     - text: "Jakie zadanie chciałbyś usunąć?"
 
-  utter_ask_time_management_tips:
-    - text: "Oto kilka wskazówek dotyczących zarządzania czasem"
-
-  utter_suggest_breaks:
-    - text: "Przerwy są ważne! Rób je regularnie, np. co 25 minut po 5 minut, oraz co 90 minut po 10 minut"
-
-  utter_ask_productivity_tips:
-    - text: "Oto kilka porad dotyczących produktywności"
-
   utter_suggest_pomodoro:
     - text: "Metoda Pomodoro polega na 25-minutowych blokach pracy z krótkimi przerwami. Chcesz ją wypróbować?"
-
-  utter_enable_pomodoro:
-    - text: "Włączam pomodoro na 25 minut."
-  
-  utter_end_pomodoro:
-    - text: "Pomodoro zakończone!"
-
-  utter_break_pomodoro:
-    - text: "Czy chcesz rozpocząć przerwę?"
 
   utter_pomodoro_ready:
     - text: "Czy jesteś na to gotowy? Jeśli tak, to odpalę pomodoro, ale nie martw się, przypomnę ci o rozpoczęciu kolejnego cyklu lub przerwy."
 
-  utter_pomodoro_ready_ready:
-    - text: "A teraz?"
-
-  utter_offer_motivation:
-    - text: "Oto motywujący cytat: 'Sukces to zdolność przejścia od porażki do porażki bez utraty entuzjazmu.' - Winston Churchill"
-
   utter_deny:
     - text: "Może innym razem"
+
+  utter_laptop_greet:
+    - text: "Witaj! Czy mogę Ci pomóc z wyborem laptopa?"
+
+  utter_ask_gaming:
+    - text: "Czy laptop ma być używany do gier?"
+
+  utter_ask_portable:
+    - text: "Czy ważna jest dla Ciebie lekkość i przenośność?"
+
+  utter_ask_budget:
+    - text: "Czy masz ograniczony budżet?"
+
+  utter_recommend_gaming_laptop:
+    - text: "Polecam laptop do gier. Są one potężniejsze, ale też droższe i cięższe."
+
+  utter_recommend_portable_laptop:
+    - text: "Polecam ultrabooka. Są lekkie i przenośne, idealne do pracy w ruchu."
+
+  utter_recommend_budget_laptop:
+    - text: "Polecam laptop budżetowy. Są przystępne cenowo, ale mogą mieć ograniczoną moc."
+
+  utter_recommend_general_laptop:
+    - text: "Wydaje się, że nie masz szczególnych wymagań. Zalecam uniwersalny laptop."
 
 entities:
  - equation
