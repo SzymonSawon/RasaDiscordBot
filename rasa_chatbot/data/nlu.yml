@@ -46,169 +46,157 @@ nlu:
 
 - intent: get_pokemon
   examples: |
-    - Co wiesz o [Pikachu](pokemon)?
+    - Co wiesz o [Bulbasaur](pokemon)?
+    - Jakie masz informacje o [Ivysaur](pokemon)?
+    - Powiedz mi coś o [Venusaur](pokemon).
+    - Wiesz coś o [Charmander](pokemon)?
+    - Co możesz powiedzieć o [Charmeleon](pokemon)?
     - Jakie masz informacje o [Charizard](pokemon)?
-    - Powiedz mi coś o [Bulbasaur](pokemon).
-    - Wiesz coś o [Squirtle](pokemon)?
-    - Co możesz powiedzieć o [Jigglypuff](pokemon)?
-    - Jakie masz informacje o [Ditto](pokemon)?
-    - Co wiesz o [Eevee](pokemon)?
-    - Co wiesz o [Mewtwo](pokemon)?
-    - Powiedz mi coś o [Snorlax](pokemon).
-    - Jakie informacje masz o [Gengar](pokemon)?
-
-- lookup: pokemon
-  examples: |
-      - Bulbasaur
-      - Ivysaur
-      - Venusaur
-      - Charmander
-      - Charmeleon
-      - Charizard
-      - Squirtle
-      - Wartortle
-      - Blastoise
-      - Caterpie
-      - Metapod
-      - Butterfree
-      - Weedle
-      - Kakuna
-      - Beedrill
-      - Pidgey
-      - Pidgeotto
-      - Pidgeot
-      - Rattata
-      - Raticate
-      - Spearow
-      - Fearow
-      - Ekans
-      - Arbok
-      - Pikachu
-      - Raichu
-      - Sandshrew
-      - Sandslash
-      - Nidorina
-      - Nidoqueen
-      - Nidoran
-      - Nidorino
-      - Nidoking
-      - Clefairy
-      - Clefable
-      - Vulpix
-      - Ninetales
-      - Jigglypuff
-      - Wigglytuff
-      - Zubat
-      - Golbat
-      - Oddish
-      - Gloom
-      - Vileplume
-      - Paras
-      - Parasect
-      - Venonat
-      - Venomoth
-      - Diglett
-      - Dugtrio
-      - Meowth
-      - Persian
-      - Psyduck
-      - Golduck
-      - Mankey
-      - Primeape
-      - Growlithe
-      - Arcanine
-      - Poliwag
-      - Poliwhirl
-      - Poliwrath
-      - Abra
-      - Kadabra
-      - Alakazam
-      - Machop
-      - Machoke
-      - Machamp
-      - Bellsprout
-      - Weepinbell
-      - Victreebel
-      - Tentacool
-      - Tentacruel
-      - Geodude
-      - Graveler
-      - Golem
-      - Ponyta
-      - Rapidash
-      - Slowpoke
-      - Slowbro
-      - Magnemite
-      - Magneton
-      - Farfetch'd
-      - Doduo
-      - Dodrio
-      - Seel
-      - Dewgong
-      - Grimer
-      - Muk
-      - Shellder
-      - Cloyster
-      - Gastly
-      - Haunter
-      - Gengar
-      - Onix
-      - Drowzee
-      - Hypno
-      - Krabby
-      - Kingler
-      - Voltorb
-      - Electrode
-      - Exeggcute
-      - Exeggutor
-      - Cubone
-      - Marowak
-      - Hitmonlee
-      - Hitmonchan
-      - Lickitung
-      - Koffing
-      - Weezing
-      - Rhyhorn
-      - Rhydon
-      - Chansey
-      - Tangela
-      - Kangaskhan
-      - Horsea
-      - Seadra
-      - Goldeen
-      - Seaking
-      - Staryu
-      - Starmie
-      - Mr. Mime
-      - Scyther
-      - Jynx
-      - Electabuzz
-      - Magmar
-      - Pinsir
-      - Tauros
-      - Magikarp
-      - Gyarados
-      - Lapras
-      - Ditto
-      - Eevee
-      - Vaporeon
-      - Jolteon
-      - Flareon
-      - Porygon
-      - Omanyte
-      - Omastar
-      - Kabuto
-      - Kabutops
-      - Aerodactyl
-      - Snorlax
-      - Articuno
-      - Zapdos
-      - Moltres
-      - Dratini
-      - Dragonair
-      - Dragonite
-      - Mewtwo
-      - Mew
+    - Co wiesz o [Squirtle](pokemon)?
+    - Jakie masz informacje o [Wartortle](pokemon)?
+    - Powiedz mi coś o [Blastoise](pokemon).
+    - Wiesz coś o [Caterpie](pokemon)?
+    - Co możesz powiedzieć o [Metapod](pokemon)?
+    - Jakie masz informacje o [Butterfree](pokemon)?
+    - Co wiesz o [Weedle](pokemon)?
+    - Jakie masz informacje o [Kakuna](pokemon)?
+    - Powiedz mi coś o [Beedrill](pokemon).
+    - Wiesz coś o [Pidgey](pokemon)?
+    - Co możesz powiedzieć o [Pidgeotto](pokemon)?
+    - Jakie masz informacje o [Pidgeot](pokemon)?
+    - Co wiesz o [Rattata](pokemon)?
+    - Jakie masz informacje o [Raticate](pokemon)?
+    - Powiedz mi coś o [Spearow](pokemon).
+    - Wiesz coś o [Fearow](pokemon)?
+    - Co możesz powiedzieć o [Ekans](pokemon)?
+    - Jakie masz informacje o [Arbok](pokemon)?
+    - Co wiesz o [Pikachu](pokemon)?
+    - Jakie masz informacje o [Raichu](pokemon)?
+    - Powiedz mi coś o [Sandshrew](pokemon).
+    - Wiesz coś o [Sandslash](pokemon)?
+    - Co możesz powiedzieć o [Nidoran](pokemon)?
+    - Jakie masz informacje o [Nidorina](pokemon)?
+    - Co wiesz o [Nidoqueen](pokemon)?
+    - Jakie masz informacje o [Nidoran](pokemon)?
+    - Powiedz mi coś o [Nidorino](pokemon).
+    - Wiesz coś o [Nidoking](pokemon)?
+    - Co możesz powiedzieć o [Clefairy](pokemon)?
+    - Jakie masz informacje o [Clefable](pokemon)?
+    - Co wiesz o [Vulpix](pokemon)?
+    - Jakie masz informacje o [Ninetales](pokemon)?
+    - Powiedz mi coś o [Jigglypuff](pokemon).
+    - Wiesz coś o [Wigglytuff](pokemon)?
+    - Co możesz powiedzieć o [Zubat](pokemon)?
+    - Jakie masz informacje o [Golbat](pokemon)?
+    - Co wiesz o [Oddish](pokemon)?
+    - Jakie masz informacje o [Gloom](pokemon)?
+    - Powiedz mi coś o [Vileplume](pokemon).
+    - Wiesz coś o [Paras](pokemon)?
+    - Co możesz powiedzieć o [Parasect](pokemon)?
+    - Jakie masz informacje o [Venonat](pokemon)?
+    - Co wiesz o [Venomoth](pokemon)?
+    - Jakie masz informacje o [Diglett](pokemon)?
+    - Powiedz mi coś o [Dugtrio](pokemon).
+    - Wiesz coś o [Meowth](pokemon)?
+    - Co możesz powiedzieć o [Persian](pokemon)?
+    - Jakie masz informacje o [Psyduck](pokemon)?
+    - Co wiesz o [Golduck](pokemon)?
+    - Jakie masz informacje o [Mankey](pokemon)?
+    - Powiedz mi coś o [Primeape](pokemon).
+    - Wiesz coś o [Growlithe](pokemon)?
+    - Co możesz powiedzieć o [Arcanine](pokemon)?
+    - Jakie masz informacje o [Poliwag](pokemon)?
+    - Co wiesz o [Poliwhirl](pokemon)?
+    - Powiedz mi coś o [Poliwrath](pokemon).
+    - Wiesz coś o [Abra](pokemon)?
+    - Co możesz powiedzieć o [Kadabra](pokemon)?
+    - Jakie masz informacje o [Alakazam](pokemon)?
+    - Co wiesz o [Machop](pokemon)?
+    - Jakie masz informacje o [Machoke](pokemon)?
+    - Powiedz mi coś o [Machamp](pokemon).
+    - Wiesz coś o [Bellsprout](pokemon)?
+    - Co możesz powiedzieć o [Weepinbell](pokemon)?
+    - Jakie masz informacje o [Victreebel](pokemon)?
+    - Co wiesz o [Tentacool](pokemon)?
+    - Jakie masz informacje o [Tentacruel](pokemon)?
+    - Powiedz mi coś o [Geodude](pokemon).
+    - Wiesz coś o [Graveler](pokemon)?
+    - Co możesz powiedzieć o [Golem](pokemon)?
+    - Jakie masz informacje o [Ponyta](pokemon)?
+    - Co wiesz o [Rapidash](pokemon)?
+    - Powiedz mi coś o [Slowpoke](pokemon).
+    - Wiesz coś o [Slowbro](pokemon)?
+    - Co możesz powiedzieć o [Magnemite](pokemon)?
+    - Jakie masz informacje o [Magneton](pokemon)?
+    - Co wiesz o [Farfetch'd](pokemon)?
+    - Jakie masz informacje o [Doduo](pokemon)?
+    - Powiedz mi coś o [Dodrio](pokemon).
+    - Wiesz coś o [Seel](pokemon)?
+    - Co możesz powiedzieć o [Dewgong](pokemon)?
+    - Jakie masz informacje o [Grimer](pokemon)?
+    - Co wiesz o [Muk](pokemon)?
+    - Powiedz mi coś o [Shellder](pokemon).
+    - Wiesz coś o [Cloyster](pokemon)?
+    - Co możesz powiedzieć o [Gastly](pokemon)?
+    - Jakie masz informacje o [Haunter](pokemon)?
+    - Powiedz mi coś o [Gengar](pokemon).
+    - Wiesz coś o [Onix](pokemon)?
+    - Co możesz powiedzieć o [Drowzee](pokemon)?
+    - Jakie masz informacje o [Hypno](pokemon)?
+    - Co wiesz o [Krabby](pokemon)?
+    - Jakie masz informacje o [Kingler](pokemon)?
+    - Powiedz mi coś o [Voltorb](pokemon).
+    - Wiesz coś o [Electrode](pokemon)?
+    - Co możesz powiedzieć o [Exeggcute](pokemon)?
+    - Jakie masz informacje o [Exeggutor](pokemon)?
+    - Co wiesz o [Cubone](pokemon)?
+    - Jakie masz informacje o [Marowak](pokemon)?
+    - Powiedz mi coś o [Hitmonlee](pokemon).
+    - Wiesz coś o [Hitmonchan](pokemon)?
+    - Co możesz powiedzieć o [Lickitung](pokemon)?
+    - Jakie masz informacje o [Koffing](pokemon)?
+    - Powiedz mi coś o [Weezing](pokemon).
+    - Wiesz coś o [Rhyhorn](pokemon)?
+    - Co możesz powiedzieć o [Rhydon](pokemon)?
+    - Jakie masz informacje o [Chansey](pokemon)?
+    - Co wiesz o [Tangela](pokemon)?
+    - Powiedz mi coś o [Kangaskhan](pokemon).
+    - Wiesz coś o [Horsea](pokemon)?
+    - Co możesz powiedzieć o [Seadra](pokemon)?
+    - Jakie masz informacje o [Goldeen](pokemon)?
+    - Co wiesz o [Seaking](pokemon)?
+    - Powiedz mi coś o [Staryu](pokemon).
+    - Wiesz coś o [Starmie](pokemon)?
+    - Co możesz powiedzieć o [Mr. Mime](pokemon)?
+    - Jakie masz informacje o [Scyther](pokemon)?
+    - Co wiesz o [Jynx](pokemon)?
+    - Jakie masz informacje o [Electabuzz](pokemon)?
+    - Powiedz mi coś o [Magmar](pokemon).
+    - Wiesz coś o [Pinsir](pokemon)?
+    - Co możesz powiedzieć o [Tauros](pokemon)?
+    - Jakie masz informacje o [Magikarp](pokemon)?
+    - Co wiesz o [Gyarados](pokemon)?
+    - Powiedz mi coś o [Lapras](pokemon).
+    - Wiesz coś o [Ditto](pokemon)?
+    - Co możesz powiedzieć o [Eevee](pokemon)?
+    - Jakie masz informacje o [Vaporeon](pokemon)?
+    - Co wiesz o [Jolteon](pokemon)?
+    - Jakie masz informacje o [Flareon](pokemon)?
+    - Co wiesz o [Porygon](pokemon)?
+    - Jakie masz informacje o [Omanyte](pokemon)?
+    - Powiedz mi coś o [Omastar](pokemon).
+    - Wiesz coś o [Kabuto](pokemon)?
+    - Co możesz powiedzieć o [Kabutops](pokemon)?
+    - Jakie masz informacje o [Aerodactyl](pokemon)?
+    - Co wiesz o [Snorlax](pokemon)?
+    - Jakie masz informacje o [Articuno](pokemon)?
+    - Co wiesz o [Zapdos](pokemon)?
+    - Jakie masz informacje o [Moltres](pokemon)?
+    - Powiedz mi coś o [Dratini](pokemon).
+    - Wiesz coś o [Dragonair](pokemon)?
+    - Co możesz powiedzieć o [Dragonite](pokemon)?
+    - Jakie masz informacje o [Mewtwo](pokemon)?
+    - Co wiesz o [Mew](pokemon)?
 
 - intent: add_task
   examples: |
