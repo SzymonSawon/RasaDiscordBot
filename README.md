@@ -12,7 +12,7 @@ https://github.com/pyenv/pyenv?tab=readme-ov-file#other-operations
    - Pokaż zadania
 2. 1st gen Pokemon information, example: "Co wiesz o [pokemon_name]?"
 3. Motivational quotes, example: "Potrzebuję motywacji"
-4. Pomodoro
+4. Pomodoro (requires discord)
 5. Laptop choice support
 
 # Tutorial:
