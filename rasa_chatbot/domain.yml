@@ -3,23 +3,85 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - math_equation
-  - get_wikipedia
+  - add_task
+  - list_tasks
+  - delete_task
+  - offer_motivation
+  - give_task
+  - get_pokemon
+  - pomodoro
+  - confirm
+  - deny
+  - thank
+  - laptop_greet
 
 actions:
-  - action_math_equation
-  - action_get_wikipedia
+  - action_add_task
+  - action_remove_task
+  - action_list_tasks
+  - action_mark_task_complete
+  - action_get_pokemon
+  - action_get_quote
+  - action_pomodoro
+  - action_pomodoro_break
+
+
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Cześć, co chcesz dzisiaj robić?"
 
   utter_goodbye:
-    - text: "Bye"
+    - text: "Mam nadzieję, że Ci pomogłem."
+
+  utter_thank:
+    - text: "Nie ma problemu, możesz zawsze na mnie liczyć"
+
+  utter_get_task:
+    - text: "Jakie zadanie chciałbyś dodać?"
+
+  utter_get_task_to_remove:
+    - text: "Jakie zadanie chciałbyś usunąć?"
+
+  utter_suggest_pomodoro:
+    - text: "Metoda Pomodoro polega na 25-minutowych blokach pracy z krótkimi przerwami. Chcesz ją wypróbować?"
+
+  utter_pomodoro_ready:
+    - text: "Czy jesteś na to gotowy? Jeśli tak, to odpalę pomodoro, ale nie martw się, przypomnę ci o rozpoczęciu kolejnego cyklu lub przerwy."
+
+  utter_deny:
+    - text: "Może innym razem"
+
+  utter_laptop_greet:
+    - text: "Witaj! Czy mogę Ci pomóc z wyborem laptopa?"
+
+  utter_ask_gaming:
+    - text: "Czy laptop ma być używany do gier?"
+
+  utter_ask_portable:
+    - text: "Czy ważna jest dla Ciebie lekkość i przenośność?"
+
+  utter_ask_budget:
+    - text: "Czy masz ograniczony budżet?"
+
+  utter_recommend_gaming_laptop:
+    - text: "Polecam laptop do gier. Są one potężniejsze, ale też droższe i cięższe."
+
+  utter_recommend_portable_laptop:
+    - text: "Polecam ultrabooka. Są lekkie i przenośne, idealne do pracy w ruchu."
+
+  utter_recommend_budget_laptop:
+    - text: "Polecam laptop budżetowy. Są przystępne cenowo, ale mogą mieć ograniczoną moc."
+
+  utter_recommend_general_laptop:
+    - text: "Wydaje się, że nie masz szczególnych wymagań. Zalecam uniwersalny laptop."
 
 entities:
  - equation
  - information
+ - task_name
+ - task_list
+ - pokemon
 
 slots:
   equation:
@@ -32,6 +94,24 @@ slots:
     mappings:
     - type: from_entity
       entity: information
+      auto_fill: True
+  task_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: task_name
+      auto_fill: True
+  task_list:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: task_list
+      auto_fill: True
+  pokemon:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: pokemon
       auto_fill: True
 
 

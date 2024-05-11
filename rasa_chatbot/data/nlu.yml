@@ -3,43 +3,317 @@ version: "3.1"
 nlu:
 - intent: greet
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - cześć
+    - witaj
+    - siema
+    - dzień dobry
+    - dobry wieczór
 
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - żegnaj
+    - spadam
+    - idę stąd
+    - do widzenia
 
-- intent: math_equation
+- intent: thank
   examples: |
-    - calculate [3*1/4](equation)
-    - process [90+1*80/(4*10)](equation)
-    - compute [3*9+5/8](equation)
+    - dziękuję
+    - dzięki
+    - było miłó
+    - przydałeś się
+    - jesteś super
 
-
-- intent: get_wikipedia
+- intent: confirm
   examples: |
-    - can you tell me about [thing](information)?
-    - what do you know about [person](information)?
-    - what is [animal](information)?
-    - Do you know anything about [company](information)?
+    - tak
+    - tak, poproszę
+    - byłoby miło
+    - bardzo
+    - oczywiście
+    - jasne
+    - pewnie
+
+- intent: deny
+  examples: |
+    - nie
+    - na pewno nie
+    - może innym razem
+    - kiedy indziej 
+    - nie sądzę
+    - nie zgadzam się
+    - raczej nie
+
+- intent: get_pokemon
+  examples: |
+    - Co wiesz o [Bulbasaur](pokemon)?
+    - Jakie masz informacje o [Ivysaur](pokemon)?
+    - Powiedz mi coś o [Venusaur](pokemon).
+    - Wiesz coś o [Charmander](pokemon)?
+    - Co możesz powiedzieć o [Charmeleon](pokemon)?
+    - Jakie masz informacje o [Charizard](pokemon)?
+    - Co wiesz o [Squirtle](pokemon)?
+    - Jakie masz informacje o [Wartortle](pokemon)?
+    - Powiedz mi coś o [Blastoise](pokemon).
+    - Wiesz coś o [Caterpie](pokemon)?
+    - Co możesz powiedzieć o [Metapod](pokemon)?
+    - Jakie masz informacje o [Butterfree](pokemon)?
+    - Co wiesz o [Weedle](pokemon)?
+    - Jakie masz informacje o [Kakuna](pokemon)?
+    - Powiedz mi coś o [Beedrill](pokemon).
+    - Wiesz coś o [Pidgey](pokemon)?
+    - Co możesz powiedzieć o [Pidgeotto](pokemon)?
+    - Jakie masz informacje o [Pidgeot](pokemon)?
+    - Co wiesz o [Rattata](pokemon)?
+    - Jakie masz informacje o [Raticate](pokemon)?
+    - Powiedz mi coś o [Spearow](pokemon).
+    - Wiesz coś o [Fearow](pokemon)?
+    - Co możesz powiedzieć o [Ekans](pokemon)?
+    - Jakie masz informacje o [Arbok](pokemon)?
+    - Co wiesz o [Pikachu](pokemon)?
+    - Jakie masz informacje o [Raichu](pokemon)?
+    - Powiedz mi coś o [Sandshrew](pokemon).
+    - Wiesz coś o [Sandslash](pokemon)?
+    - Co możesz powiedzieć o [Nidoran](pokemon)?
+    - Jakie masz informacje o [Nidorina](pokemon)?
+    - Co wiesz o [Nidoqueen](pokemon)?
+    - Jakie masz informacje o [Nidoran](pokemon)?
+    - Powiedz mi coś o [Nidorino](pokemon).
+    - Wiesz coś o [Nidoking](pokemon)?
+    - Co możesz powiedzieć o [Clefairy](pokemon)?
+    - Jakie masz informacje o [Clefable](pokemon)?
+    - Co wiesz o [Vulpix](pokemon)?
+    - Jakie masz informacje o [Ninetales](pokemon)?
+    - Powiedz mi coś o [Jigglypuff](pokemon).
+    - Wiesz coś o [Wigglytuff](pokemon)?
+    - Co możesz powiedzieć o [Zubat](pokemon)?
+    - Jakie masz informacje o [Golbat](pokemon)?
+    - Co wiesz o [Oddish](pokemon)?
+    - Jakie masz informacje o [Gloom](pokemon)?
+    - Powiedz mi coś o [Vileplume](pokemon).
+    - Wiesz coś o [Paras](pokemon)?
+    - Co możesz powiedzieć o [Parasect](pokemon)?
+    - Jakie masz informacje o [Venonat](pokemon)?
+    - Co wiesz o [Venomoth](pokemon)?
+    - Jakie masz informacje o [Diglett](pokemon)?
+    - Powiedz mi coś o [Dugtrio](pokemon).
+    - Wiesz coś o [Meowth](pokemon)?
+    - Co możesz powiedzieć o [Persian](pokemon)?
+    - Jakie masz informacje o [Psyduck](pokemon)?
+    - Co wiesz o [Golduck](pokemon)?
+    - Jakie masz informacje o [Mankey](pokemon)?
+    - Powiedz mi coś o [Primeape](pokemon).
+    - Wiesz coś o [Growlithe](pokemon)?
+    - Co możesz powiedzieć o [Arcanine](pokemon)?
+    - Jakie masz informacje o [Poliwag](pokemon)?
+    - Co wiesz o [Poliwhirl](pokemon)?
+    - Powiedz mi coś o [Poliwrath](pokemon).
+    - Wiesz coś o [Abra](pokemon)?
+    - Co możesz powiedzieć o [Kadabra](pokemon)?
+    - Jakie masz informacje o [Alakazam](pokemon)?
+    - Co wiesz o [Machop](pokemon)?
+    - Jakie masz informacje o [Machoke](pokemon)?
+    - Powiedz mi coś o [Machamp](pokemon).
+    - Wiesz coś o [Bellsprout](pokemon)?
+    - Co możesz powiedzieć o [Weepinbell](pokemon)?
+    - Jakie masz informacje o [Victreebel](pokemon)?
+    - Co wiesz o [Tentacool](pokemon)?
+    - Jakie masz informacje o [Tentacruel](pokemon)?
+    - Powiedz mi coś o [Geodude](pokemon).
+    - Wiesz coś o [Graveler](pokemon)?
+    - Co możesz powiedzieć o [Golem](pokemon)?
+    - Jakie masz informacje o [Ponyta](pokemon)?
+    - Co wiesz o [Rapidash](pokemon)?
+    - Powiedz mi coś o [Slowpoke](pokemon).
+    - Wiesz coś o [Slowbro](pokemon)?
+    - Co możesz powiedzieć o [Magnemite](pokemon)?
+    - Jakie masz informacje o [Magneton](pokemon)?
+    - Co wiesz o [Farfetch'd](pokemon)?
+    - Jakie masz informacje o [Doduo](pokemon)?
+    - Powiedz mi coś o [Dodrio](pokemon).
+    - Wiesz coś o [Seel](pokemon)?
+    - Co możesz powiedzieć o [Dewgong](pokemon)?
+    - Jakie masz informacje o [Grimer](pokemon)?
+    - Co wiesz o [Muk](pokemon)?
+    - Powiedz mi coś o [Shellder](pokemon).
+    - Wiesz coś o [Cloyster](pokemon)?
+    - Co możesz powiedzieć o [Gastly](pokemon)?
+    - Jakie masz informacje o [Haunter](pokemon)?
+    - Powiedz mi coś o [Gengar](pokemon).
+    - Wiesz coś o [Onix](pokemon)?
+    - Co możesz powiedzieć o [Drowzee](pokemon)?
+    - Jakie masz informacje o [Hypno](pokemon)?
+    - Co wiesz o [Krabby](pokemon)?
+    - Jakie masz informacje o [Kingler](pokemon)?
+    - Powiedz mi coś o [Voltorb](pokemon).
+    - Wiesz coś o [Electrode](pokemon)?
+    - Co możesz powiedzieć o [Exeggcute](pokemon)?
+    - Jakie masz informacje o [Exeggutor](pokemon)?
+    - Co wiesz o [Cubone](pokemon)?
+    - Jakie masz informacje o [Marowak](pokemon)?
+    - Powiedz mi coś o [Hitmonlee](pokemon).
+    - Wiesz coś o [Hitmonchan](pokemon)?
+    - Co możesz powiedzieć o [Lickitung](pokemon)?
+    - Jakie masz informacje o [Koffing](pokemon)?
+    - Powiedz mi coś o [Weezing](pokemon).
+    - Wiesz coś o [Rhyhorn](pokemon)?
+    - Co możesz powiedzieć o [Rhydon](pokemon)?
+    - Jakie masz informacje o [Chansey](pokemon)?
+    - Co wiesz o [Tangela](pokemon)?
+    - Powiedz mi coś o [Kangaskhan](pokemon).
+    - Wiesz coś o [Horsea](pokemon)?
+    - Co możesz powiedzieć o [Seadra](pokemon)?
+    - Jakie masz informacje o [Goldeen](pokemon)?
+    - Co wiesz o [Seaking](pokemon)?
+    - Powiedz mi coś o [Staryu](pokemon).
+    - Wiesz coś o [Starmie](pokemon)?
+    - Co możesz powiedzieć o [Mr. Mime](pokemon)?
+    - Jakie masz informacje o [Scyther](pokemon)?
+    - Co wiesz o [Jynx](pokemon)?
+    - Jakie masz informacje o [Electabuzz](pokemon)?
+    - Powiedz mi coś o [Magmar](pokemon).
+    - Wiesz coś o [Pinsir](pokemon)?
+    - Co możesz powiedzieć o [Tauros](pokemon)?
+    - Jakie masz informacje o [Magikarp](pokemon)?
+    - Co wiesz o [Gyarados](pokemon)?
+    - Powiedz mi coś o [Lapras](pokemon).
+    - Wiesz coś o [Ditto](pokemon)?
+    - Co możesz powiedzieć o [Eevee](pokemon)?
+    - Jakie masz informacje o [Vaporeon](pokemon)?
+    - Co wiesz o [Jolteon](pokemon)?
+    - Jakie masz informacje o [Flareon](pokemon)?
+    - Co wiesz o [Porygon](pokemon)?
+    - Jakie masz informacje o [Omanyte](pokemon)?
+    - Powiedz mi coś o [Omastar](pokemon).
+    - Wiesz coś o [Kabuto](pokemon)?
+    - Co możesz powiedzieć o [Kabutops](pokemon)?
+    - Jakie masz informacje o [Aerodactyl](pokemon)?
+    - Co wiesz o [Snorlax](pokemon)?
+    - Jakie masz informacje o [Articuno](pokemon)?
+    - Co wiesz o [Zapdos](pokemon)?
+    - Jakie masz informacje o [Moltres](pokemon)?
+    - Powiedz mi coś o [Dratini](pokemon).
+    - Wiesz coś o [Dragonair](pokemon)?
+    - Co możesz powiedzieć o [Dragonite](pokemon)?
+    - Jakie masz informacje o [Mewtwo](pokemon)?
+    - Co wiesz o [Mew](pokemon)?
+
+- intent: add_task
+  examples: |
+    - Dodaj nowe zadanie
+    - Chcę dodać zadanie do listy
+    - Mam nowe zadanie
+
+- intent: give_task
+  examples: |
+    - Kup mleko
+    - Napisz raport
+    - Zrób pranie
+    - Przygotuj obiad
+    - Odkurz mieszkanie
+    - Zaplanuj spotkanie
+    - Zamów bilety na koncert
+    - Zaktualizuj oprogramowanie
+    - Przeczytaj książkę
+    - Pobiegaj
+    - Zrób zakupy spożywcze
+    - Zaprojektuj nowy projekt
+    - Zaktualizuj stronę internetową
+    - Zapisz się na kurs online
+    - Sprawdź pocztę
+    - Napisz wiadomość e-mail
+    - Wymyśl nowy pomysł na projekt
+    - Zamów kwiaty na urodziny
+    - Przygotuj prezentację
+    - Zapisz się na siłownię
+    - Wybierz się na spacer
+    - Napisz artykuł
+    - Zarezerwuj hotel na wakacje
+    - Zaktualizuj CV
+    - Wypierz ubrania
+    - Zarejestruj się na konferencję
+    - Posprzątaj kuchnię
+    - Zrób kawę
+    - Zapisz się do lekarza
+    - Sprawdź wyniki egzaminu
+    - Wykonaj telefon
+    - Uporządkuj dokumenty
+    - Obejrzyj film
+    - Zamów jedzenie na wynos
+    - Zarezerwuj stolik w restauracji
+    - Napisz nowy rozdział książki
+    - Zaplanuj harmonogram na tydzień
+    - Opracuj plan na weekend
+    - Ucz się języka obcego
+    - Wyślij kartkę urodzinową
+    - Kup 2 litry mleka
+    - Napisz 5 raportów
+    - Zrób pranie 3 razy w tygodniu
+    - Przygotuj obiad dla 4 osób
+    - Zamów 10 biletów na koncert
+    - Przeczytaj 3 rozdziały książki
+    - Zaktualizuj stronę do wersji 2.1
+    - Obejrzyj 2 filmy wieczorem
+    - Przebiegnij 5 kilometrów
+    - Wypierz 4 koszule
+    - Posprzątaj mieszkanie w 30 minut
+    - Zamów 2 pizze
+    - Odkurzaj co najmniej 2 razy w tygodniu
+    - Zaplanuj 3 spotkania w tym miesiącu
+    - Napisz 2 strony artykułu
+    - Zarezerwuj 3 pokoje w hotelu
+    - Zrób 50 pompek
+    - Ucz się 1 godziny dziennie
+    - Obejrzyj 4 odcinki serialu
+    - Sprawdź pocztę co 30 minut
+    - Przygotuj prezentację do 12:00
+    - Obejrzyj 10 filmów w miesiącu
+    - Wykonaj 3 telefony dzisiaj
+    - Kup 5 różnych rodzajów owoców
+
+- intent: list_tasks
+  examples: |
+    - Jakie mam zadania do zrobienia?
+    - Pokaż listę moich zadań
+    - Co mam na liście zadań?
+    - Moje zadanka
+
+
+- intent: delete_task
+  examples: |
+    - Usuń to zadanie
+    - Chcę usunąć zadanie z listy
+    - Zdejmij zadanie z mojej listy
+    - Usuń zadanie
+    - Pozbądź się zadania
+    - Wywal to gówno
+    - Wywal to zadanie
+
+- intent: pomodoro
+  examples: |
+    - Co to jest metoda Pomodoro?
+    - Jak używać metody Pomodoro?
+    - Pomóż mi zacząć Pomodoro
+    - Tryb pomodoro
+    - Włącz pomodoro
+    - Potrzebuję pomodoro
+
+
+- intent: offer_motivation
+  examples: |
+    - Potrzebuję motywacji
+    - Daj mi motywujący cytat
+    - Motywuj mnie
+    - Podaj mi jakiś cytat
+    - Potrzebuję cytatu
+    - Znasz jakieś motywujące cytaty?
+
+- intent: laptop_greet
+  examples: |
+    - cześć, potrzebuję laptopa
+    - cześć, potrzebuję komputera
+    - witaj, czy znasz się na komputerach?
+    - siema, masz może lapka?
+    - dzień dobry, czy można dostać poradę dotyczącą laptopa?
+    - dobry wieczór, powiesz mi coś o laptopach?
+
