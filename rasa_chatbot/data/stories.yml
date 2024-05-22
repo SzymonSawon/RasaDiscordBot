@@ -53,7 +53,7 @@ stories:
     - intent: confirm
     - action: utter_pomodoro_ready
     - intent: confirm
-    - action: action_pomodoro
+    - action: utter_pomodoro_start
 
 - story: Pomodoro timer deny
   steps:

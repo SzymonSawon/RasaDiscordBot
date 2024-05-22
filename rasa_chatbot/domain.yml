@@ -22,10 +22,6 @@ actions:
   - action_mark_task_complete
   - action_get_pokemon
   - action_get_quote
-  - action_pomodoro
-  - action_pomodoro_break
-
-
 
 responses:
   utter_greet:
@@ -48,6 +44,9 @@ responses:
 
   utter_pomodoro_ready:
     - text: "Czy jesteś na to gotowy? Jeśli tak, to odpalę pomodoro, ale nie martw się, przypomnę ci o rozpoczęciu kolejnego cyklu lub przerwy."
+
+  utter_pomodoro_start:
+    - text: "INITIATE_POMODORO"
 
   utter_deny:
     - text: "Może innym razem"

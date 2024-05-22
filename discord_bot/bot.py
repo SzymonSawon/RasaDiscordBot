@@ -11,7 +11,6 @@ import datetime
 from discord.ext import commands
 
 intents = discord.Intents.default()
-bot = commands.Bot(command_prefix="!", intents=intents)
 async def send_message(message):
     username = str(message.author)
     url = getenv("RASA_ENDPOINT") or "http://localhost:5005/webhooks/rest/webhook"
@@ -31,7 +30,11 @@ async def send_message(message):
     for resp in response.json():
         if resp["recipient_id"] != username:
             continue
-        await message.reply(resp["text"])
+        text = resp["text"]
+        if text == "INITIATE_POMODORO":
+            asyncio.create_task(start_pomodoro_timer(message.channel))
+        else:
+            await message.reply(text)
 
 async def start_pomodoro_timer(channel):
     duration = 10      
@@ -65,12 +68,9 @@ class RasaBot(discord.Client):
     async def on_message(self, message):
         if message.author.id == self.user.id:
             return 
-        if message.content.lower() == "!timer":
-            print(f"Got message from {message.author}: {message.content}")
-            await start_pomodoro_timer(message.channel)
-        else:
-            print(f"Got message from {message.author}: {message.content}")
-            await send_message(message)
+
+        print(f"Got message from {message.author}: {message.content}")
+        await send_message(message)
 
 
 intents.message_content = True
