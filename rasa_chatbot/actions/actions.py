@@ -116,30 +116,6 @@ class ActionListTasks(Action):
         return [SlotSet("task_list", task_list_text)]
 
 
-class ActionPomodoro(Action):
-    def name(self) -> str:
-        return "action_pomodoro"
-
-    def run(self, dispatcher: CollectingDispatcher, tracker, domain):
-        command = {
-                "content": "!timer"
-                }
-        response = requests.post("https://discordapp.com/api/webhooks/1236597900721520713/w96KltXMAgGXJGUv6sydNZVXevKV_CMcWisz5DICMWhMUwl4V3OoleFvOCoMis98Zi-j", json=command)
-        return []
-
-
-class ActionPomodoroBreak(Action):
-    def name(self) -> str:
-        return "action_pomodoro"
-
-    def run(self, dispatcher: CollectingDispatcher, tracker, domain):
-        command = {
-                "content": "!timer"
-                }
-        response = requests.post("https://discordapp.com/api/webhooks/1236597900721520713/w96KltXMAgGXJGUv6sydNZVXevKV_CMcWisz5DICMWhMUwl4V3OoleFvOCoMis98Zi-j", json=command)
-        return []
-
-
 class ActionGetPokemon(Action):
     def name(self) -> str:
         return "action_get_pokemon"

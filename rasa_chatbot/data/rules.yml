@@ -17,7 +17,7 @@ rules:
   steps:
     - action: utter_pomodoro_ready
     - intent: confirm
-    - action: action_pomodoro
+    - action: utter_pomodoro_start
 
 - rule: task_remove
   steps:

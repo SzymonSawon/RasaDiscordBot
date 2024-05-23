@@ -211,6 +211,8 @@ nlu:
     - to jest dobry pomysł
     - zgadzam się w pełni
     - zgoda, popieram
+    - ok
+    - ok,
 
 - intent: deny
   examples: |
