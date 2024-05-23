@@ -19,6 +19,18 @@ rules:
     - intent: confirm
     - action: utter_pomodoro_start
 
+- rule: task_remove
+  steps:
+    - action: utter_get_task_to_remove
+    - intent: give_task
+    - action: action_remove_task
+
+- rule: task_add
+  steps:
+    - action: utter_get_task
+    - intent: give_task
+    - action: action_add_task
+
 - rule: laptop r1
   steps:
     - action: utter_laptop_greet

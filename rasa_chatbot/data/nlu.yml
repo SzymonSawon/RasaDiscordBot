@@ -8,6 +8,82 @@ nlu:
     - siema
     - dzień dobry
     - dobry wieczór
+    - hej
+    - halo
+    - elo
+    - serwus
+    - witam
+    - hejo
+    - hejka
+    - hej hej
+    - co tam?
+    - jak się masz?
+    - jak tam?
+    - jak leci?
+    - co słychać?
+    - jak życie?
+    - siemanko
+    - siema siema
+    - siemka
+    - witamy
+    - witajcie
+    - dzień dobry wszystkim
+    - dzień dobry wam
+    - witam serdecznie
+    - cześć wszystkim
+    - cześć wam
+    - hej wszystkim
+    - hej wam
+    - halo wszystkim
+    - elo wszystkim
+    - serwus wszystkim
+    - witam wszystkich
+    - hejka wszystkim
+    - hejka wam
+    - hej ho
+    - cześć i czołem
+
+- intent: inform
+  examples: |
+    - Co mogę zrobić?
+    - Jakie mam możliwosći?
+    - Jakie masz możliwości?
+    - Co potrafisz?
+    - Co możesz zrobić?
+    - Co potrafię?
+    - Co mogę zrobić tutaj?
+    - Jakie są opcje?
+    - Co można tutaj zrobić?
+    - Co masz w ofercie?
+    - Jakie masz funkcje?
+    - Jakie masz umiejętności?
+    - Jak mogę z tego skorzystać?
+    - Jakie są twoje zdolności?
+    - Jakie masz zdolności?
+    - Jakie są twoje możliwości?
+    - Co tutaj można zrobić?
+    - Jakie mam opcje?
+    - Jakie mam do wyboru?
+    - Co tutaj mogę zrobić?
+    - Co oferujesz?
+    - Jakie oferujesz usługi?
+    - Jakie są dostępne opcje?
+    - Jakie są dostępne możliwości?
+    - Jakie masz propozycje?
+    - Jakie są twoje propozycje?
+    - Co tutaj można zrobić ciekawego?
+    - Co mi proponujesz?
+    - Jak mogę wykorzystać twoje możliwości?
+    - Jakie masz do zaoferowania funkcje?
+    - Jak mogę cię użyć?
+    - Co mogę z tobą zrobić?
+    - Jakie są dostępne usługi?
+    - Co tutaj oferujesz?
+    - Co możesz mi zaproponować?
+    - Jakie masz ciekawe opcje?
+    - Jakie są twoje zdolności?
+    - Jak mogę skorzystać z twoich usług?
+    - Co możesz mi zaoferować?
 
 - intent: goodbye
   examples: |
@@ -15,35 +91,169 @@ nlu:
     - spadam
     - idę stąd
     - do widzenia
+    - pa
+    - na razie
+    - trzymaj się
+    - do zobaczenia
+    - do jutra
+    - do usłyszenia
+    - żegnam
+    - bywaj
+    - papa
+    - narka
+    - na razie, trzymaj się
+    - pa pa
+    - na razie, do jutra
+    - do następnego
+    - żegnam was
+    - żegnamy się
+    - kończę
+    - muszę iść
+    - muszę lecieć
+    - miłego dnia
+    - miłego wieczoru
+    - miłego
+    - do ponownego
+    - bądź zdrowy
+    - do następnego razu
+    - wszystkiego dobrego
+    - powodzenia
+    - trzymaj się ciepło
+    - do miłego
+    - do usłyszenia, pa
+    - muszę kończyć
+    - kończę rozmowę
+    - żegnam serdecznie
 
 - intent: thank
   examples: |
     - dziękuję
     - dzięki
-    - było miłó
+    - było miło
     - przydałeś się
     - jesteś super
+    - dziękuję bardzo
+    - wielkie dzięki
+    - jestem wdzięczny
+    - doceniam to
+    - to było pomocne
+    - to miło z twojej strony
+    - dzięki wielkie
+    - dzięki za pomoc
+    - bardzo dziękuję
+    - jesteś wspaniały
+    - dzięki za wszystko
+    - naprawdę dziękuję
+    - ogromnie dziękuję
+    - szczerze dziękuję
+    - z całego serca dziękuję
+    - to naprawdę pomogło
+    - to było bardzo pomocne
+    - jesteś niezastąpiony
+    - to mi wiele znaczy
+    - nie wiem, co bym bez ciebie zrobił
+    - dzięki za wsparcie
+    - dziękuję za twoje wsparcie
+    - dziękuję za twoją pomoc
+    - jesteś najlepszy
+    - dziękuję za twoją życzliwość
+    - dzięki za radę
+    - dzięki za wskazówki
+    - bardzo mi pomogłeś
+    - to było świetne
+    - jesteś niesamowity
+    - jestem ci wdzięczny
+    - dziękuję za wszystko
+    - serdecznie dziękuję
+    - to wiele dla mnie znaczy
 
 - intent: confirm
   examples: |
     - tak
+    - ok, poproszę
+    - ok
     - tak, poproszę
     - byłoby miło
     - bardzo
     - oczywiście
     - jasne
     - pewnie
+    - zgadzam się
+    - tak, zgadzam się
+    - zdecydowanie
+    - dokładnie
+    - oczywiście, że tak
+    - na pewno
+    - absolutnie
+    - jak najbardziej
+    - w pełni się zgadzam
+    - to prawda
+    - z pewnością
+    - bez wątpienia
+    - tak, jak najbardziej
+    - tak, proszę
+    - tak, dziękuję
+    - to mi pasuje
+    - to brzmi dobrze
+    - w porządku
+    - tak, jestem za
+    - w pełni popieram
+    - tak, tak
+    - zgoda
+    - okej
+    - masz rację
+    - słusznie
+    - tak, masz rację
+    - całkowicie się zgadzam
+    - oczywiście, że zgadzam się
+    - tak, dokładnie tak
+    - całkowicie
+    - to jest dobry pomysł
+    - zgadzam się w pełni
+    - zgoda, popieram
     - ok
+    - ok,
 
 - intent: deny
   examples: |
     - nie
     - na pewno nie
     - może innym razem
-    - kiedy indziej 
+    - kiedy indziej
     - nie sądzę
     - nie zgadzam się
     - raczej nie
+    - zdecydowanie nie
+    - absolutnie nie
+    - nie, dziękuję
+    - to nie dla mnie
+    - nie, nie zgadzam się
+    - nie, to nie jest dobry pomysł
+    - nie chcę
+    - nie potrzebuję
+    - to nie jest to
+    - nie, nie chcę tego
+    - to nie pasuje
+    - to nie dla mnie
+    - nie jestem zainteresowany
+    - nie, nie teraz
+    - nie dzisiaj
+    - nie, dzięki
+    - nie, to nie to
+    - nie, nie zgadzam się z tym
+    - to mi nie odpowiada
+    - to nie to, czego szukam
+    - nie, absolutnie nie
+    - nie, to nie ma sensu
+    - nie widzę tego tak
+    - nie, to nie jest to, czego chcę
+    - nie, to nie jest dla mnie
+    - nie widzę tego w ten sposób
+    - nie, to nie brzmi dobrze
+    - nie, to nie dla mnie
+    - to nie jest to, czego potrzebuję
+    - nie mogę się z tym zgodzić
+    - to nie to, co miałem na myśli
 
 - intent: get_pokemon
   examples: |
@@ -204,6 +414,43 @@ nlu:
     - Dodaj nowe zadanie
     - Chcę dodać zadanie do listy
     - Mam nowe zadanie
+    - Dodaj zadanie
+    - Dodaj to do mojej listy zadań
+    - Chciałbym dodać zadanie
+    - Proszę dodać nowe zadanie
+    - Dodaj coś do mojej listy zadań
+    - Mam zadanie do dodania
+    - Zapisz nowe zadanie
+    - Stwórz nowe zadanie
+    - Chciałbym wpisać zadanie
+    - Dodaj to jako zadanie
+    - Utwórz nowe zadanie
+    - Wprowadź nowe zadanie
+    - Chcę dopisać zadanie
+    - Proszę dodać to zadanie
+    - Dodaj coś do listy zadań
+    - Mam coś do dodania do listy zadań
+    - Dodaj to zadanie do listy
+    - Wpisz zadanie na listę
+    - Chcę dodać kolejne zadanie
+    - Dodaj zadanie do listy
+    - Dodaj punkt do zadań
+    - Chciałbym dodać kolejne zadanie
+    - Dodaj jeszcze jedno zadanie
+    - Proszę dodać kolejne zadanie
+    - Mam jeszcze jedno zadanie
+    - Chcę dodać coś nowego do listy zadań
+    - Wprowadź to jako zadanie
+    - Dodaj nowe zadanie do mojej listy
+    - Dodaj zadanie na listę
+    - Chciałbym wprowadzić zadanie
+    - Mam coś do dodania jako zadanie
+    - Chcę wprowadzić nowe zadanie
+    - Proszę zapisać to zadanie
+    - Dodaj to do mojej listy
+    - Zapisz to jako zadanie
+    - Utwórz nowe zadanie na liście
+    - Dodaj to do zadań
 
 - intent: give_task
   examples: |
@@ -271,6 +518,154 @@ nlu:
     - Obejrzyj 10 filmów w miesiącu
     - Wykonaj 3 telefony dzisiaj
     - Kup 5 różnych rodzajów owoców
+    - Zagraj w grę planszową
+    - Ugotuj zupę
+    - Kup chleb
+    - Zrób porządek w szafie
+    - Złap motyla
+    - Przynieś wodę
+    - Napisz list
+    - Weź parasol
+    - Wybierz nową tapetę
+    - Zjedz kolację
+    - Umyj samochód
+    - Przygotuj ciasto
+    - Posprzątaj pokój
+    - Wykąp psa
+    - Weź książkę
+    - Sprawdź kalendarz
+    - Odkurz dywan
+    - Umyj naczynia
+    - Posadź kwiaty
+    - Znajdź klucze
+    - Napisz wiersz
+    - Upiecz ciasteczka
+    - Zjedz śniadanie
+    - Wyczyść okna
+    - Zrób sałatkę
+    - Wynieś śmieci
+    - Narysuj obrazek
+    - Kup warzywa
+    - Uporządkuj garaż
+    - Zrób smoothie
+    - Zamów sushi
+    - Napraw rower
+    - Pomaluj ściany
+    - Nakarm kota
+    - Przebierz dziecko
+    - Weź leki
+    - Znajdź okulary
+    - Umyj podłogę
+    - Kup bilet na autobus
+    - Przygotuj kanapki
+    - Zadzwoń do mamy
+    - Włącz telewizor
+    - Wyprasuj koszulę
+    - Przytnij żywopłot
+    - Wyczyść lodówkę
+    - Przebierz się
+    - Nakarm ryby
+    - Wysusz włosy
+    - Włącz światło
+    - Zresetuj router
+    - Złap muchę
+    - Rozłóż namiot
+    - Umyj okno dachowe
+    - Znajdź pilot
+    - Pomaluj paznokcie
+    - Kup sok
+    - Umyj owoce
+    - Złap rybę
+    - Znajdź skarpetki
+    - Wytrzyj kurze
+    - Kup lody
+    - Obejrzyj koncert
+    - Weź okulary przeciwsłoneczne
+    - Posadź drzewo
+    - Znajdź książkę
+    - Napompuj piłkę
+    - Ugotuj ryż
+    - Przesadź roślinę
+    - Przyszyj guzik
+    - Wyłącz komputer
+    - Zbieraj jagody
+    - Otwórz okno
+    - Sprawdź prognozę pogody
+    - Ułóż puzzle
+    - Udekoruj tort
+    - Zrób herbatę
+    - Sprawdź ciśnienie w oponach
+    - Zasłoń zasłony
+    - Zaktualizuj aplikację
+    - Zjedz jabłko
+    - Wyczyść klawiaturę
+    - Znajdź śrubokręt
+    - Poskładaj ubrania
+    - Wyczyść piekarnik
+    - Zrób pizzę
+    - Kup ser
+    - Włącz radio
+    - Umyj ręce
+    - Napisz kartkę
+    - Znajdź gazetę
+    - Przygotuj grzanki
+    - Wyjdź na balkon
+    - Wysusz pranie
+    - Znajdź latarkę
+    - Otwórz butelkę wina
+    - Złap świerszcza
+    - Weź parasolkę
+    - Poskładaj ręczniki
+    - Umyj lustro
+    - Zawieś zasłony
+    - Poskładaj łóżko
+    - Znajdź paszport
+    - Ugotuj jajka
+    - Wyczyść mikser
+    - Zrób gofry
+    - Umyj samochodowe szyby
+    - Znajdź ładowarkę
+    - Otwórz paczkę
+    - Posprzątaj w piwnicy
+    - Zjedz lunch
+    - Napełnij wannę
+    - Włącz klimatyzację
+    - Zrób kompot
+    - Umyj zęby
+    - Wyrzuć stare czasopisma
+    - Znajdź ciepłe skarpety
+    - Włącz wentylator
+    - Zaparz kawę
+    - Umyj laptopa
+    - Przygotuj popcorn
+    - Wymień żarówkę
+    - Zawieś pranie
+    - Wyprasuj spodnie
+    - Posprzątaj na biurku
+    - Znajdź paszport
+    - Kup wodę
+    - Przebierz dziecko w pidżamę
+    - Przygotuj obiad
+    - Zamów taksówkę
+    - Przesadź kwiaty
+    - Umyj okna
+    - Przygotuj herbatę
+    - Zrób smoothie
+    - Napisz wiersz
+    - Wyłącz komputer
+    - Kup bilet na autobus
+    - Zatrzymaj czas
+    - Przebierz psa w krawat
+    - Przekonaj kota do rozmowy
+    - Zaprojektuj rakietę z papieru
+    - Namaluj portret niewidzialnego człowieka
+    - Wyhoduj drzewo z ziaren kawy
+    - Wysłuchaj ciszy
+    - Zamień wodę w wino
+    - Odkryj nowe kolory
+    - Uleć na skrzydłach marzeń
+    - Wyląduj na chmurze
+   
 
 - intent: list_tasks
   examples: |
@@ -278,6 +673,41 @@ nlu:
     - Pokaż listę moich zadań
     - Co mam na liście zadań?
     - Moje zadanka
+    - Pokaż moje zadania
+    - Jak wygląda moja lista zadań?
+    - Jakie zadania są do wykonania?
+    - Lista moich zadań
+    - Co mam do zrobienia?
+    - Jakie są moje zadania?
+    - Pokaż moje zaplanowane zadania
+    - Jakie są moje dzisiejsze zadania?
+    - Co mam dziś do zrobienia?
+    - Jakie są moje priorytetowe zadania?
+    - Jakie zadania są na liście?
+    - Jakie mam zadania na dziś?
+    - Co jest na mojej liście zadań?
+    - Jakie są moje nadchodzące zadania?
+    - Jakie są moje zaplanowane zadania?
+    - Jakie mam zadania na ten tydzień?
+    - Pokaż moją bieżącą listę zadań
+    - Jakie mam zaplanowane zadania?
+    - Pokaż, co mam do zrobienia
+    - Jakie zadania mam na liście?
+    - Lista moich zaplanowanych zadań
+    - Jakie są zadania do wykonania?
+    - Jakie zadania mam do wykonania?
+    - Pokaż mi moje zadania
+    - Pokaż moje bieżące zadania
+    - Jakie zadania mam w planach?
+    - Co jest na liście moich zadań?
+    - Jakie są moje ważne zadania?
+    - Jakie są zadania do zrobienia?
+    - Pokaż zadania na mojej liście
+    - Co mam na dzisiejszej liście zadań?
+    - Jakie mam priorytetowe zadania?
+    - Jakie są moje zadania do zrobienia?
+    - Co mam do zrobienia w tym tygodniu?
+    - Jakie zadania są zaplanowane?
 
 
 - intent: delete_task
@@ -289,6 +719,38 @@ nlu:
     - Pozbądź się zadania
     - Wywal to gówno
     - Wywal to zadanie
+    - Skasuj to zadanie
+    - Chcę skasować zadanie
+    - Skasuj zadanie z listy
+    - Usuń to z listy zadań
+    - Wykreśl to zadanie
+    - Chcę wykreślić zadanie
+    - Wykreśl to z mojej listy
+    - Chcę usunąć to zadanie
+    - Usuń coś z listy zadań
+    - Wykreśl to zadanie z listy
+    - Chcę usunąć to z mojej listy
+    - Skreśl to zadanie
+    - Skreśl to z listy
+    - Chcę skreślić to zadanie
+    - Skreśl coś z listy zadań
+    - Usuń zadanie z listy
+    - Chcę pozbyć się tego zadania
+    - Chcę wywalić to zadanie
+    - Usuń tę pozycję z listy
+    - Chcę skreślić coś z listy
+    - Skasuj pozycję z listy
+    - Usuń tę pozycję
+    - Pozbądź się tej pozycji
+    - Usuń to z listy
+    - Skreśl to
+    - Chcę wykreślić coś z listy
+    - Chcę pozbyć się czegoś z listy
+    - Usuń jedno zadanie
+    - Skreśl jedną pozycję
+    - Usuń jeden element
+    - Chcę usunąć jeden element z listy
+    - Skreśl jeden element z listy
 
 - intent: pomodoro
   examples: |
@@ -298,7 +760,38 @@ nlu:
     - Tryb pomodoro
     - Włącz pomodoro
     - Potrzebuję pomodoro
-
+    - Jak działa technika Pomodoro?
+    - Chcę pracować w trybie Pomodoro
+    - Uruchom Pomodoro
+    - Czym jest metoda Pomodoro?
+    - Jak zacząć technikę Pomodoro?
+    - Pokaż, jak działa Pomodoro
+    - Co to jest Pomodoro?
+    - Jak stosować metodę Pomodoro?
+    - Jak włączyć Pomodoro?
+    - Chcę używać Pomodoro
+    - Wytłumacz mi metodę Pomodoro
+    - Jak korzystać z Pomodoro?
+    - Przełącz na tryb Pomodoro
+    - Zastosuj technikę Pomodoro
+    - Pomóż mi zastosować Pomodoro
+    - Jak pracować w trybie Pomodoro?
+    - Opowiedz mi o Pomodoro
+    - Chcę zacząć pracę w Pomodoro
+    - Wyjaśnij mi metodę Pomodoro
+    - Jak działa metoda Pomodoro?
+    - Potrzebuję pomocy z Pomodoro
+    - Pomóż mi używać Pomodoro
+    - Aktywuj tryb Pomodoro
+    - Zastosuj metodę Pomodoro
+    - Włącz tryb Pomodoro
+    - Jak wprowadzić technikę Pomodoro?
+    - Chcę pracować metodą Pomodoro
+    - Pokaż mi, jak działa Pomodoro
+    - Jak aktywować tryb Pomodoro?
+    - Chcę wiedzieć więcej o Pomodoro
+    - Pomóż mi z techniką Pomodoro
+    - Jak zacząć pracę w trybie Pomodoro?
 
 - intent: offer_motivation
   examples: |
@@ -308,13 +801,62 @@ nlu:
     - Podaj mi jakiś cytat
     - Potrzebuję cytatu
     - Znasz jakieś motywujące cytaty?
+    - Daj mi coś motywującego
+    - Podaj cytat na dziś
+    - Potrzebuję inspiracji
+    - Zainspiruj mnie
+    - Szukam inspiracji
+    - Chcę motywacji
+    - Zainspiruj mnie cytatem
+    - Daj mi coś inspirującego
+    - Znasz jakiś cytat?
+    - Potrzebuję wsparcia
+    - Zmotywuj mnie
+    - Szukam motywacji
+    - Daj mi inspirację
+    - Potrzebuję inspirującego cytatu
+    - Znasz jakieś inspirujące cytaty?
+    - Potrzebuję słów wsparcia
+    - Znasz jakiś inspirujący cytat?
+    - Daj mi coś inspirującego na dziś
+    - Chcę coś motywującego
+    - Daj mi inspirujący cytat
+    - Potrzebuję inspiracji do działania
+    - Znasz motywujące słowa?
+    - Daj mi słowa wsparcia
+    - Zainspiruj mnie do działania
+    - Potrzebuję inspirujących słów
+    - Znasz jakieś motywujące słowa?
+    - Daj mi cytat motywacyjny
+    - Znasz inspirujące cytaty?
+    - Potrzebuję motywującego cytatu
+    - Chcę usłyszeć coś motywującego
+    - Zainspiruj mnie słowami
+    - Potrzebuję inspirujących cytatów
+    - Daj mi coś motywacyjnego
 
 - intent: laptop_greet
   examples: |
-    - cześć, potrzebuję laptopa
-    - cześć, potrzebuję komputera
-    - witaj, czy znasz się na komputerach?
-    - siema, masz może lapka?
-    - dzień dobry, czy można dostać poradę dotyczącą laptopa?
-    - dobry wieczór, powiesz mi coś o laptopach?
+    - potrzebuję laptopa
+    - potrzebuję komputera
+    - czy znasz się na komputerach?
+    - masz może lapka?
+    - czy można dostać poradę dotyczącą laptopa?
+    - powiesz mi coś o laptopach?
+    - szukam laptopa
+    - szukam komputera
+    - potrzebuję pomocy z laptopem
+    - potrzebuję laptopa
+    - szukam laptopa
+    - masz jakieś laptopy?
+    - szukam rady dotyczącej laptopa
+    - znasz się na laptopach?
+    - chciałbym kupić laptopa
+    - czy możesz pomóc mi z laptopem?
+    - potrzebuję nowego laptopa
+    - chcę kupić komputer
+    - czy mogę dostać poradę dotyczącą laptopa?
+    - szukam nowego laptopa
+    - szukam nowego komputera
+    - jakie laptopy polecasz?
 

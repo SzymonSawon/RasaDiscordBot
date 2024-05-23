@@ -14,6 +14,7 @@ intents:
   - deny
   - thank
   - laptop_greet
+  - inform
 
 actions:
   - action_add_task
@@ -75,6 +76,18 @@ responses:
   utter_recommend_general_laptop:
     - text: "Wydaje się, że nie masz szczególnych wymagań. Zalecam uniwersalny laptop."
 
+  utter_default:
+    - text: "Nie rozumiem, czy mógłbyś to powtórzyć?"
+
+  utter_functions:
+    - text: | 
+        Potrafie bardzo wiele rzeczy, ale możesz się skupić na:
+          \u2022 Zardządzanie zadaniami(dodawanie, usuwanie i oczywiście pokazanie)
+          \u2022 Mogę cię zmotywować
+          \u2022 Możemy też popracować z pomocą techniki pomodoro
+          \u2022 Chętnie ci pomogę w kupnie laptopa
+          \u2022 (szept) mogę też ci coś powiedzieć o pokemonach
+
 entities:
  - equation
  - information
@@ -112,7 +125,6 @@ slots:
     - type: from_entity
       entity: pokemon
       auto_fill: True
-
 
 session_config:
   session_expiration_time: 60
