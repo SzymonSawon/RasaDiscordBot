@@ -33,6 +33,7 @@ nlu:
     - oczywiście
     - jasne
     - pewnie
+    - ok
 
 - intent: deny
   examples: |
