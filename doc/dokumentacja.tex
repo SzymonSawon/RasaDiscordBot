@@ -1,0 +1,354 @@
+\documentclass{article}
+
+\nonstopmode
+
+\usepackage{makecell}
+\usepackage{polski}
+\usepackage[margin=1in]{geometry}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage[shortlabels]{enumitem}
+
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{violet}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+\lstset{
+    literate={ą}{{\k{a}}}1
+             {ć}{{\'c}}1
+             {ę}{{\k{e}}}1
+             {ł}{{\l{}}}1
+             {ń}{{\'n}}1
+             {ó}{{\'o}}1
+             {ś}{{\'s}}1
+             {ź}{{\'z}}1
+             {ż}{{\.z}}1
+}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+   \begin{center}
+       \textbf{Produktywny chatbot Rasa z discordem}
+
+       \textbf{Dokumentacja}
+
+
+            
+        \vspace{15cm}          
+     
+            
+       Wydział Informatyki Politechniki Białostockiej\\
+       Politechnika Białostocka\\
+       Prowadzący: Michał Czołombitko\\
+       Data:
+            
+   \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\section{Wprowadzenie i teoria}
+Rasa to framework, który pozwala na tworzenie chatbotów używających ai. Dzięki
+niemu można prowadzić konwersację z botem używając różnych API oraz modeli. Aby
+w pełni zrozumieć czym jest Rasa trzeba wpierw dowiedzieć się czym są modele
+uczenia maszynowego, CDD oraz NLU.
+
+\subsection{Model uczenia maszynowego}
+Jest to obiekt używający różnych algorytmów do znalezienia wzorców w podanych
+danych treningowych i na ich podstawie stara się przewidzieć wynik. Model ten
+może używać różnych algorytmów. Takich jak:
+\begin{itemize}
+    \item Regresja Liniowa
+    \item Maszyna Wektorów Nośnych
+    \item Sieci neuronowe
+\end{itemize}
+
+\subsection{NLU (Natural Language Understanding)}
+Jest to część rasy, która odpowiada za analizę poszczególnych wiadomości od 
+użytkownika, czyli klasyfikacja intencji, wyodrębnienie zmiennych z treści
+wiadomości oraz analiza odpowiedzi. Głównym komponentem są \emph{intencje},
+które mogą zawierać \emph{byty}.
+
+\subsubsection{Intencje (ang. Intents)}
+Są to przykładowe wiadomości, jakie użytkownik może wprowadzić. Im mamy ich
+więcej, tym mniejsza jest szansa, że bot się pomyli. Przykładowa intencja
+witania się w Rasa wygląda następująco:
+
+\begin{lstlisting}[caption=Przykładowa intencja]
+- intent: przywitanie
+  examples: |
+    - "Cześć!"
+    - "Siema"
+    - "Hej"
+    - "Dzień dobry"
+\end{lstlisting}
+
+\subsubsection{Byty (ang. Entities)}
+Intencje mogą też zawierać byty, czyli informacja zawarta w treści wiadomości.
+Aby móc je wydobyć potrzebne są specjalne dane treningowe oraz Extractor'a.
+Takie informacje mogą być przydatne, kiedy chcemy, żeby użytkownik w wiadomości
+podawał na dane, które możemy później wykorzystać. Przykładem użycia bytów może
+być firma, która zajmuje się klawiaturami i do tego potrzebuje wiedzieć, jaki
+model klawiatury jest używany przez użytkownika.
+
+\begin{lstlisting}[caption=Przykładowa intencja z użyciem bytów]
+- intent: 
+  examples: |
+    - "Zepsułem [superKlawiatura3000]
+    - "Nie działa mi [średniaKlawiatura1a00d0]
+    - "co mi powiesz o modelu [MFA8W221Ad]?
+\end{lstlisting}
+
+\subsection{CDD (Conversation-Driven Development)}
+CDD jest procesem polegającym na słuchaniu użytkowników i na podstawie
+zebranych informacji ulepszaniu chatbota. Jest to szczególnie ważny proces,
+ponieważ nie da się przewidzieć, co powie użytkownik. Użytkownicy używają
+swoich własnych stwierdzeń oraz wyrażeń, które mogą okazać się niespodziewane.
+Proces ten nie jest liniowy, ale można go podzielić na pewne kroki:
+\begin{enumerate}
+    \item Udostępnieniu informacji użytkownikom,
+    \item Regularnym sprawdzaniu oraz ocenianiu wyników konwersacji,
+    \item Zapisywaniu niespodziewanych wiadomości i dodawaniu ich do danych
+    uczących,
+    \item Testowaniu asystenta(chatbota),
+    \item Zapisywaniu błędów oraz mierzeniu wydajności,
+    \item Naprawie niepoprawnych konwersacji.
+\end{enumerate}
+
+\subsection{Dane konwersacji}
+Po napisaniu intencji bot musi wiedzieć, co ma odpowiedzieć i do tego będą
+potrzebne \emph{scenariusze (ang. stories)} oraz \emph{zasady (ang. rules)}.
+Użytkownik może obrać różne ścieżki, a niemożliwym jest zapisaniei
+nauczenie go wszystkich możliwych, dlatego będziemy wykorzystywać CDD.
+
+\subsubsection{Scenariusze}
+Scenariusze to rozmowy, w których definiuje się, co bot ma odpowiadać na zadane
+mu pytania. Składają się one z intencji, bytów oraz akcji. Akcja jest
+odpowiedzią na daną intencję, może być ona prostym zdaniem, albo można
+zdefiniować skrypt w języku Python. W historiach możemy definiować różne
+ściężki, dzięki czemu są elastyczne. Przykładem może być zwykła rozmowa.
+
+\begin{lstlisting}[caption=Przykładowa historia]
+- story: zwykła rozmowa
+  steps:
+   - intent: przywitanie
+   - action: utter_zapytanie_co_u_ciebie
+   - intent: złe_samopoczucie
+   - action: utter_pocieszenie
+\end{lstlisting}
+
+\begin{lstlisting}[caption= Jak zdefiniowane są odpowiedzi]
+utter_zapytanie_co_u_ciebie:
+- text: "Cześć, co u ciebie?"
+\end{lstlisting}
+
+\subsubsection{Zasady}
+Zasady, to część to rozmowy, która nigdy nie może zmienić toru. W odróżnieniu
+od scenariuszy, w zasadach nie ma różnych ścieżek. Dana zasada jest definitywna
+i jeśli bot odbierze jakąś intencję, to zasada zmusi bota, żeby zawsze na nią
+odpowiadał w ten sam sposób.
+
+\begin{lstlisting}[caption=Przykładowa zasada]
+- rule: Zawsze odpowiadaj na przywitanie
+   - intent: przywitanie
+   - action: utter_zapytanie_co_u_ciebie
+\end{lstlisting}
+
+\begin{lstlisting}[caption= Jak zdefiniowane są odpowiedzi]
+utter_zapytanie_co_u_ciebie:
+- text: "Cześć, co u ciebie?"
+\end{lstlisting}
+
+\section{Jak używać?}
+Pierwszym krokiem jest wytrenowanie bota za pomocą komendy:
+\verb|rasa train|
+Kolejnym krokiem jest ustawienie bota na discordzie, do niego trzeba stworzyć
+token bota discordowego w serwisie Discord Developer Console. Następnie trzeba
+użyć komendy:
+\verb|echo "DISCORD_TOKEN=..." > discord_bot/.env|
+co pozwoli na dodanie zarządzanie botem z discorda.
+Następnie trzeba włączyć rasę oraz połączyć ją z discordem:
+\begin{enumerate}
+    \item W pierwszym terminalu należy udostępnić api rasy: 
+        \verb|rasa run --enable-api|.
+    \item W drugim terminalu należy włączyć serwer własnych akcji:
+        \verb|rasa run actions|.
+    \item W trzecim terminalu trzeba włączyć bota na discordzie za pomocą
+        komendy: \verb|python discord_bot/bot.py|.
+\end{enumerate}
+Alternatywnie można używać bota nie w discordzie, tylko w terminalu. Przy
+wybraniu tej opcji nie da się używać funkcjonalności Pomodoro.
+\begin{enumerate}
+    \item Najpierw należy włączyć serwer własnych akcji w osobnym terminalu:
+        \verb|rasa run actions|.
+    \item Potem, żeby aktywować bota w terminalu, trzeba użyć komendy: 
+        \verb|rasa shell|.
+\end{enumerate}
+\section{Projekt produktywny chat}
+\subsection{Wstęp}
+Każda intencja ma co najmniej 40 przykładów. Podstawowe intencje:
+\begin{itemize}
+    \item \verb|greet| - Przywitanie.
+    \item \verb|thank|- Podziękowanie.
+    \item \verb|inform| - Prośba o podanie funkcjonalności.
+    \item \verb|goodbye| - Pożegnanie.
+    \item \verb|confirm| - Potwierdzenie.
+    \item \verb|deny| - Zaprzeczenie.
+\end{itemize}
+W pliku sotries można znaleźć podstawowe historie:
+\begin{itemize}
+    \item \verb|story_functions| - Podanie listy funkcjonalności.
+    \item \verb|st_greet| - Przywitanie się.
+    \item \verb|st_goodbye| - Pożegnanie się.
+    \item \verb|thank| - Odpowiedź na podziękowanie.
+\end{itemize}
+W pliku domain występują potrzebne odpowiedzi:
+\begin{itemize}
+    \item \verb|utter_greet| - "Cześć, co chcesz dzisiaj robić?"
+    \item \verb|utter_goodbye| - "Mam nadzieję, że Ci pomogłem."
+    \item \verb|utter_thank| - "Nie ma problemu, możesz zawsze na mnie liczyć."
+    \item \verb|utter_deny| - "Może innym razem."
+    \item \verb|utter_functions| - Wymienienie funkcjonalności.
+    \item \verb|utter_default| - Odpowiedź używana, kiedy bot nie jest
+        wystarczająco pewny swojej odpowiedzi.
+\end{itemize}
+\subsection{Zarządzanie zadaniami}
+Chatbot może dodawać, usuwać oraz pokazywać zadania. Każdy użytkownik na kanale
+discorda ma oddzielną listę, te listy oraz ich właściciele są zapisane w pliku
+tasks.json. Chatbot czyta wiadomości wysłane z discorda i dzięki tej
+komunikacji może odczytać informację o nadawcy wiadomości. To pozwala na
+przypisanie oddzielnej listy zadań dla każdego użytkownika. Są tutaj używane
+trzy akcje niestandardowe:
+
+\begin{itemize}
+    \item \verb|action_add_task| - Akcja odczytuje listę zadań, a jeśli
+        użytkownik jeszcze nic nie dodał, to tworzy nowego użytkownika.
+        Następnie dodaje nowe zadanie na koniec listy.
+    \item \verb|action_remove_task| - Akcja odczytuje listę zadań, a jeśli
+        użytkownik jeszcze nic nie dodał, wyświetla odpowiedni komunikat.
+        W przeciwnym przypadku przeszukuje listę, a następnie usuwa zadanie
+        z listy.
+    \item \verb|action_list_tasks| - Akcja odczytuje listę zadań, a jeśli
+        użytkownik jeszcze nic nie dodał, to wyświetla odpowiedni komunikat.
+        W przeciwnym przypadku iteruje przez listę i wypisudodanie zadania.je kolejno zadania.
+\end{itemize}
+Przykładowa akcja:
+\begin{lstlisting}[language=Python, caption=Akcja dodawania]
+class ActionAddTask(Action):
+    def name(self) -> Text:
+        return "action_add_task"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        # Ustalenie ścieżki do pliku z listami zadań.
+        path = Path("./data/tasks.json")
+        # Pobranie nazwy użytkownika z discorda.
+        metadata = tracker.latest_message.get("metadata", {})
+        user_name = metadata.get("user_name", "nieznany użytkownik")
+
+        # Trzeba to wywalić
+        if not path.exists():
+            dispatcher.utter_message(text="Nie masz jeszcze zadań")
+
+        # Otwarcie pliku.
+        with open("./data/tasks.json", "r") as file:
+            data = json.load(file)
+
+        #Pobranie zadania podanego przez użytkownika w ostatniej wiadomości.
+        task = tracker.latest_message['text']
+        
+        #Sprawdzenie, czy użytkownik został dodany oraz dodanie zadania.
+        if str(user_name)[1:] not in data:
+            data.update({str(user_name)[1:]:{"tasks": [{"task": task}]}})
+        else:
+            data[str(user_name)[1:]]["tasks"].append({"task": task})
+
+        with open("./data/tasks.json", "w") as file:
+            data = json.dump(data, file)
+
+        # Wypisanie odpowiedzi.
+        dispatcher.utter_message(text=f"Dodano zadanie: {task}")
+
+        return []
+\end{lstlisting}
+
+Ta funkcjonalność wykorzystuje intencje:
+\begin{itemize}
+    \item \verb|add_task| - Prośba o dodanie zadania.
+    \item \verb|delete_task| - Prośba o usunięcie zadania.
+    \item \verb|give_task| - Przykładowe zadania, jakie może podać użytkownik.
+        Jest tam 210 przykładów poczynając od prostych takich jak: "Kup mleko",
+        a kończąc na bardziej abstrakcyjnych: "Wysłuchaj ciszy".
+    \item \verb|list_tasks| - Prośba o wypisanie zadań.
+\end{itemize}
+Dodano tutaj trzy proste scenariusze, które połączono z zasadami
+zabezpieczającymi, żeby po prośbie o usunięcie/dodanie zadania, zawsze było
+można je podać.
+Scenariusze:
+\begin{itemize}
+    \item \verb|Adding a task|
+    \item \verb|Remove a task|
+    \item \verb|Listing tasks| 
+\end{itemize}
+Zasady:
+\begin{itemize}
+    \item \verb|task_remove|
+    \item \verb|task_add|
+\end{itemize}
+
+
+\subsection{Cytaty motywacyjne}
+Kolejną funkcjonalnością chatu jest wysyłanie motywujących cytatów, kiedy
+użytkownik np. czuje się przytłoczony lub traci wenę do pracy. Za działanie
+odpowiada jedna niestandardowa akcja(\verb|action_get_quote|). Wysyła ona
+zapytanie do zewnętrznego api i w przypadku powodzenia wypisuje cytat wraz z
+jego autorem, natomiast w przeciwnym przypaku wypisuje odpowiednie
+powiadomienie. W tej funkcjonalności występuje tylko jedna intencja z prośbą o
+zmotywowanie(\verb|offer_motivation|) oraz jeden scenariusz(Motivational quote
+generator) łączący tą akcję z niestandardową akcją.
+
+
+\subsection{Informacje o Pokémon'ach}
+Tutaj działanie jest takie same jak w poprzedniej funkcjonalności, z tą
+zmianą, że trzeba pobrać więcej informacji o Pokémon'ie:
+nazwa, wzrost, waga, typ. Występuje tutaj jedna, ale bardzo obszerna intencja 
+\verb|get_pokemon| zawierająca 150 przykładów, duża ich ilość jest spowodowana
+ogromną ilością istniejących Pokémon'ów(w dniu pisania tej dokumentacji liczba
+ta wynosi 1025). Scenariusz to \verb|Pokemon|.
+
+
+\subsection{Informacje o Pokémon'ach}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\listoffigures
+
+\end{document}
