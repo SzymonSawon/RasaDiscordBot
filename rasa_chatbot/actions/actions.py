@@ -30,21 +30,25 @@ class ActionAddTask(Action):
         path = Path("./data/tasks.json")
         metadata = tracker.latest_message.get("metadata", {})
         user_name = metadata.get("user_name", "nieznany użytkownik")
+
         if not path.exists():
-            dispatcher.utter_message(text="Nie masz jeszcze zadań")
+            with open(path, "w") as file:
+                json.dump({}, file)
 
-
-        with open("./data/tasks.json", "r") as file:
-            data = json.load(file)
+        with open(path, "r") as file:
+            try:
+                data = json.load(file)
+            except json.JSONDecodeError:
+                data = {}
 
         task = tracker.latest_message['text']
-        if str(user_name)[1:] not in data:
-            data.update({str(user_name)[1:]:{"tasks": [{"task": task}]}})
+        if user_name not in data:
+            data[user_name] = {"tasks": [{"task": task}]}
         else:
-            data[str(user_name)[1:]]["tasks"].append({"task": task})
+            data[user_name]["tasks"].append({"task": task})
 
-        with open("./data/tasks.json", "w") as file:
-            data = json.dump(data, file)
+        with open(path, "w") as file:
+            json.dump(data, file, ensure_ascii=False, indent=4)
 
         dispatcher.utter_message(text=f"Dodano zadanie: {task}")
 
@@ -62,54 +66,72 @@ class ActionRemoveTask(Action):
         path = Path("./data/tasks.json")
         metadata = tracker.latest_message.get("metadata", {})
         user_name = metadata.get("user_name", "nieznany użytkownik")
+
         if not path.exists():
             dispatcher.utter_message(text="Nie masz jeszcze zadań")
+            return []
 
+        with open(path, "r") as file:
+            try:
+                data = json.load(file)
+            except json.JSONDecodeError:
+                dispatcher.utter_message(text="Przepraszam, ale mam błąd w danych, czy mógłbyś mnie zrestartować?")
+                return []
 
-        with open("./data/tasks.json", "r") as file:
-            data = json.load(file)
-
-        if str(user_name)[1:] not in data:
+        if user_name not in data:
             dispatcher.utter_message(text="Nie masz jeszcze zadań")
             return []
+
+        task = tracker.latest_message['text']
+        tasks = data[user_name]["tasks"]
+        task_found = False
+        for i in tasks:
+            if i["task"] == task:
+                tasks.remove(i)
+                task_found = True
+                break
+
+        if not task_found:
+            dispatcher.utter_message(text=f"Zadanie '{task}' nie zostało znalezione.")
         else:
-            task = tracker.latest_message['text']
-            for i in data[str(user_name)[1:]]["tasks"]:
-                if (i["task"] == task):
-                    data[str(user_name)[1:]]["tasks"].remove(i)
-
-        with open("./data/tasks.json", "w") as file:
-            data = json.dump(data, file)
-
-        dispatcher.utter_message(text=f"Usunięto zadanie: {task}")
+            with open(path, "w") as file:
+                json.dump(data, file, ensure_ascii=False, indent=4)
+            dispatcher.utter_message(text=f"Usunięto zadanie: {task}")
 
         return []
+
+
 
 
 class ActionListTasks(Action):
     def name(self) -> str:
         return "action_list_tasks"
 
-    def run(self, dispatcher: CollectingDispatcher, tracker, domain):
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
         path = Path("./data/tasks.json")
 
         metadata = tracker.latest_message.get("metadata", {})
         user_name = metadata.get("user_name", "nieznany użytkownik")
 
         if not path.exists():
-            path.parent.mkdir(parents=True, exist_ok=True)
-            with open(path, "w") as file:
-                json.dump({"tasks": []}, file, indent=2)
-
-        with open("./data/tasks.json", "r") as file:
-            data = json.load(file)
-
-        if str(user_name)[1:] not in data:
             dispatcher.utter_message(text="Nie masz jeszcze zadań")
             return []
-        else:
-            task_names = [task["task"] for task in data[str(user_name)[1:]]["tasks"]]
 
+        with open(path, "r") as file:
+            try:
+                data = json.load(file)
+            except json.JSONDecodeError:
+                dispatcher.utter_message(text="Przepraszam, ale mam błąd w danych, czy mógłbyś mnie zrestartować?")
+                return []
+
+        if user_name not in data or not data[user_name]["tasks"]:
+            dispatcher.utter_message(text="Nie masz jeszcze zadań")
+            return []
+
+        task_names = [task["task"] for task in data[user_name]["tasks"]]
         task_list_text = "\n \u2022 " + " \n \u2022 ".join(task_names)
 
         dispatcher.utter_message(text=f"Twoje zadania to: {task_list_text}")
