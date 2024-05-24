@@ -10,8 +10,8 @@
 \usepackage{float}
 \usepackage{verbatim}
 \usepackage[shortlabels]{enumitem}
-
 \usepackage{color}
+\usepackage{tikz}
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{caption}
@@ -31,25 +31,34 @@
              {ż}{{\.z}}1
 }
 
-
-
-
 \begin{document}
 
 \begin{titlepage}
+    \AddToShipoutPicture*{\BackgroundPic}
+
    \begin{center}
        \textbf{Produktywny chatbot Rasa z discordem}
 
        \textbf{Dokumentacja}
 
 
-            
-        \vspace{15cm}          
+        \vspace{5cm}  
+        
+        \begin{figure}[htp]
+
+        \centering
+        \includegraphics[width=.3\textwidth]{figures/discord-mark-blue.png}\hfill
+        \includegraphics[width=.1\textwidth]{figures/plus-symbol-button.png}\hfill
+        \includegraphics[width=.3\textwidth]{figures/idqvezu_8-_1716542229027.png}
+
+
+        \end{figure}     
      
             
+        \vspace{8cm}  
+
        Wydział Informatyki Politechniki Białostockiej\\
        Politechnika Białostocka\\
-       Prowadzący: Michał Czołombitko\\
        Data:
             
    \end{center}
@@ -94,12 +103,13 @@ witania się w Rasa wygląda następująco:
 \end{lstlisting}
 
 \subsubsection{Byty (ang. Entities)}
-Intencje mogą też zawierać byty, czyli informacja zawarta w treści wiadomości.
-Aby móc je wydobyć potrzebne są specjalne dane treningowe oraz Extractor'a.
-Takie informacje mogą być przydatne, kiedy chcemy, żeby użytkownik w wiadomości
-podawał na dane, które możemy później wykorzystać. Przykładem użycia bytów może
-być firma, która zajmuje się klawiaturami i do tego potrzebuje wiedzieć, jaki
-model klawiatury jest używany przez użytkownika.
+Intencje mogą też zawierać byty, czyli informacje zawarte w treści wiadomości.
+Aby móc je wydobyć potrzebne są specjalne dane treningowe oraz
+Extractor(ustawiany w konfiguracji chatbota). Takie informacje mogą być
+przydatne, kiedy chcemy, żeby użytkownik w wiadomości podawał na dane, które
+możemy później wykorzystać. Przykładem użycia bytów może być firma, która
+zajmuje się klawiaturami i do tego potrzebuje wiedzieć, jaki model klawiatury
+jest używany przez użytkownika.
 
 \begin{lstlisting}[caption=Przykładowa intencja z użyciem bytów]
 - intent: 
@@ -116,20 +126,20 @@ ponieważ nie da się przewidzieć, co powie użytkownik. Użytkownicy używają
 swoich własnych stwierdzeń oraz wyrażeń, które mogą okazać się niespodziewane.
 Proces ten nie jest liniowy, ale można go podzielić na pewne kroki:
 \begin{enumerate}
-    \item[\textcolor{violet}{\textbullet}] Udostępnieniu informacji użytkownikom,
-    \item[\textcolor{violet}{\textbullet}] Regularnym sprawdzaniu oraz ocenianiu wyników konwersacji,
-    \item[\textcolor{violet}{\textbullet}] Zapisywaniu niespodziewanych wiadomości i dodawaniu ich do danych
+    \item[\textcolor{violet}{\textbullet}] Udostępnienie informacji użytkownikom,
+    \item[\textcolor{violet}{\textbullet}] Regularne sprawdzanie oraz ocenianie wyników konwersacji,
+    \item[\textcolor{violet}{\textbullet}] Zapisywanie niespodziewanych wiadomości i dodawanie ich do danych
     uczących,
-    \item[\textcolor{violet}{\textbullet}] Testowaniu asystenta(chatbota),
-    \item[\textcolor{violet}{\textbullet}] Zapisywaniu błędów oraz mierzeniu wydajności,
-    \item[\textcolor{violet}{\textbullet}] Naprawie niepoprawnych konwersacji.
+    \item[\textcolor{violet}{\textbullet}] Testowanie asystenta(chatbota),
+    \item[\textcolor{violet}{\textbullet}] Zapisywanie błędów oraz mierzenie wydajności,
+    \item[\textcolor{violet}{\textbullet}] Naprawa niepoprawnych konwersacji.
 \end{enumerate}
 
 \subsection{Dane konwersacji}
 Po napisaniu intencji bot musi wiedzieć, co ma odpowiedzieć i do tego będą
 potrzebne \emph{scenariusze (ang. stories)} oraz \emph{zasady (ang. rules)}.
-Użytkownik może obrać różne ścieżki, a niemożliwym jest zapisaniei
-nauczenie go wszystkich możliwych, dlatego będziemy wykorzystywać CDD.
+Użytkownik może obrać różne ścieżki, a niemożliwym jest zapisanie i
+nauczenie go wszystkich możliwości, dlatego będziemy wykorzystywać proces CDD.
 
 \subsubsection{Scenariusze}
 Scenariusze to rozmowy, w których definiuje się, co bot ma odpowiadać na zadane
@@ -156,7 +166,8 @@ utter_zapytanie_co_u_ciebie:
 Zasady, to część to rozmowy, która nigdy nie może zmienić toru. W odróżnieniu
 od scenariuszy, w zasadach nie ma różnych ścieżek. Dana zasada jest definitywna
 i jeśli bot odbierze jakąś intencję, to zasada zmusi bota, żeby zawsze na nią
-odpowiadał w ten sam sposób.
+odpowiadał w ten sam sposób. Zasad nie można pisać jak scenariuszy, ponieważ
+można dodać tylko jedną interakcję użytkownika.
 
 \begin{lstlisting}[caption=Przykładowa zasada]
 - rule: Zawsze odpowiadaj na przywitanie
