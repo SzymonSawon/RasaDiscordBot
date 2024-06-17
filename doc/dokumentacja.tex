@@ -285,7 +285,7 @@ odpowiedzi, które mogą być z różnych dziedzin, a Spacy jest dużo lepiej
 dostosowane do takiego działania niż podstawowa konfiguracja. Do Spacy użyto
 modelu języka polskiego \verb|pl_core_news_sm|. Dodatkowo w konfiguracji
 zmieniono zasady. Podstawową zmianą było dodanie wskaźnika pewności siebie,
-który jest ustawiony na 60\%. Jeśli bot nie jest pewny swojego wyboru, to wyśle
+który jest ustawony na 40\%. Jeśli bot nie jest pewny swojego wyboru, to wyśle
 odpowiedź, że nie rozumie wiadomości. Dodatkowo zwiększono liczbę epok w obu
 UnexpecTEDIntentPolicy(tutaj też zmieniono rozmiar wsadów) i TEDPolicy.
 
@@ -319,38 +319,41 @@ class ActionAddTask(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        # Przygotowanie danych do pliku.
         path = Path("./data/tasks.json")
         metadata = tracker.latest_message.get("metadata", {})
         user_name = metadata.get("user_name", "nieznany użytkownik")
-    
-        # Sprawdzenie, czy plik istnieje.
-        if not path.exists():
-            with open(path, "w") as file:
-                json.dump({}, file)
-        
-        # Otwarcie pliku.
-        with open(path, "r") as file:
-            try:
-                data = json.load(file)
-            except json.JSONDecodeError:
-                data = {}
-        
-        # Pobranie ostatnio wysłanej wiadomości przez użytkowika.
-        task = tracker.latest_message['text']
 
-        # Dodanie zadania do tablicy z zadaniami.
-        if user_name not in data:
-            data[user_name] = {"tasks": [{"task": task}]}
+        user_intents = [event for event in tracker.events if event.get("event") == "user"]
+        if len(user_intents) >= 2:
+            last_last_intent = user_intents[-2]['parse_data']['intent']['name']
         else:
-            data[user_name]["tasks"].append({"task": task})
-        
-        # Zaktualizowanie pliku nową listą.
-        with open(path, "w") as file:
-            json.dump(data, file, ensure_ascii=False, indent=4)
-        
-        # Powiadomienie użytkownika o dodanym zadaniu.
-        dispatcher.utter_message(text=f"Dodano zadanie: {task}")
+            last_last_intent = "no tasks yet"
+
+
+        if last_last_intent != "add_task":
+            dispatcher.utter_message(text=f"Nie rozumiem, mógłbyś powtórzyć?")
+        else:
+            if not path.exists():
+                with open(path, "w") as file:
+                    json.dump({}, file)
+
+            with open(path, "r") as file:
+                try:
+                    data = json.load(file)
+                except json.JSONDecodeError:
+                    data = {}
+
+            task = tracker.latest_message['text']
+            task = task.lower()
+            if user_name not in data:
+                data[user_name] = {"tasks": [{"task": task}]}
+            else:
+                data[user_name]["tasks"].append({"task": task})
+
+            with open(path, "w") as file:
+                json.dump(data, file, ensure_ascii=False, indent=4)
+
+            dispatcher.utter_message(text=f"Dodano zadanie: {task}")
 
         return []
 \end{lstlisting}

@@ -76,6 +76,13 @@ stories:
     - intent: deny
     - action: utter_deny
 
+- story: Laptop Recommendation denied
+  steps:
+    - intent: laptop_greet
+    - action: utter_laptop_greet
+    - intent: deny
+    - action: utter_deny
+
 - story: Laptop Recommendation
   steps:
     - intent: laptop_greet
