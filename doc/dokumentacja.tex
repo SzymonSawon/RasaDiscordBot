@@ -37,7 +37,7 @@
     \AddToShipoutPicture*{\BackgroundPic}
 
    \begin{center}
-       \textbf{Produktywny chatbot Rasa z discordem}
+       \textbf{Produktywny chatbot Rasa z Discordem}
 
        \textbf{Dokumentacja}
 
@@ -59,7 +59,7 @@
 
        Wydział Informatyki Politechniki Białostockiej\\
        Politechnika Białostocka\\
-       Data:
+       Data: 17.06.2024
             
    \end{center}
 \end{titlepage}
@@ -67,7 +67,7 @@
 \tableofcontents
 
 \section{Wprowadzenie i teoria}
-Rasa to framework, który pozwala na tworzenie chatbotów używających ai. Dzięki
+Rasa to framework, który pozwala na tworzenie chatbotów używających AI. Dzięki
 niemu można prowadzić konwersację z botem używając różnych API oraz modeli. Aby
 w pełni zrozumieć czym jest Rasa trzeba wpierw dowiedzieć się czym są modele
 uczenia maszynowego, CDD oraz NLU.
@@ -83,7 +83,7 @@ może używać różnych algorytmów. Takich jak:
 \end{itemize}
 
 \subsection{NLU (Natural Language Understanding)}
-Jest to część rasy, która odpowiada za analizę poszczególnych wiadomości od 
+Jest to część Rasy, która odpowiada za analizę poszczególnych wiadomości od 
 użytkownika, czyli klasyfikacja intencji, wyodrębnienie zmiennych z treści
 wiadomości oraz analiza odpowiedzi. Głównym komponentem są \emph{intencje},
 które mogą zawierać \emph{byty}.
@@ -146,7 +146,7 @@ Scenariusze to rozmowy, w których definiuje się, co bot ma odpowiadać na zada
 mu pytania. Składają się one z intencji, bytów oraz akcji. Akcja jest
 odpowiedzią na daną intencję, może być ona prostym zdaniem, albo można
 zdefiniować skrypt w języku Python. W historiach możemy definiować różne
-ściężki, dzięki czemu są elastyczne. Przykładem może być zwykła rozmowa.
+ścieżki, dzięki czemu są elastyczne. Przykładem może być zwykła rozmowa.
 
 \begin{lstlisting}[caption=Przykładowa historia]
 - story: zwykła rozmowa
@@ -209,21 +209,21 @@ podstawie rzeczywistych interakcji użytkowników.
 \section{Jak używać?}
 Pierwszym krokiem jest wytrenowanie bota za pomocą komendy:
 \verb|rasa train|
-Kolejnym krokiem jest ustawienie bota na discordzie, do niego trzeba stworzyć
+Kolejnym krokiem jest ustawienie bota na Discordzie, do niego trzeba stworzyć
 token bota discordowego w serwisie Discord Developer Console. Następnie trzeba
 użyć komendy:
 \verb|echo "DISCORD_TOKEN=..." > discord_bot/.env|
-co pozwoli na dodanie zarządzanie botem z discorda.
-Następnie trzeba włączyć rasę oraz połączyć ją z discordem:
+co pozwoli na dodanie zarządzanie botem z Discorda.
+Następnie trzeba włączyć rasę oraz połączyć ją z Discordem:
 \begin{enumerate}
-    \item[\textcolor{violet}{\textbullet}] W pierwszym terminalu należy udostępnić api rasy: 
+    \item[\textcolor{violet}{\textbullet}] W pierwszym terminalu należy udostępnić API Rasy (w katalogu \verb|rasa_chatbot|): 
         \verb|rasa run --enable-api|.
     \item[\textcolor{violet}{\textbullet}] W drugim terminalu należy włączyć serwer własnych akcji:
         \verb|rasa run actions|.
-    \item[\textcolor{violet}{\textbullet}] W trzecim terminalu trzeba włączyć bota na discordzie za pomocą
+    \item[\textcolor{violet}{\textbullet}] W trzecim terminalu trzeba włączyć bota na Discordzie za pomocą
         komendy: \verb|python discord_bot/bot.py|.
 \end{enumerate}
-Alternatywnie można używać bota nie w discordzie, tylko w terminalu. Przy
+Alternatywnie można używać bota nie w Discordzie, tylko w terminalu. Przy
 wybraniu tej opcji nie da się używać funkcjonalności Pomodoro.
 \begin{enumerate}
     \item[\textcolor{violet}{\textbullet}] Najpierw należy włączyć serwer własnych akcji w osobnym terminalu:
@@ -253,7 +253,7 @@ W pliku domain występują podstawowe akcje typu response:
   \item[\textcolor{violet}{\textbullet}] \verb|utter_recommend_budget_laptop| - "Polecam laptop budżetowy. Są przystępne cenowo, ale mogą mieć ograniczoną moc."
   \item[\textcolor{violet}{\textbullet}] \verb|utter_recommend_general_laptop| - "Wydaje się, że nie masz szczególnych wymagań. Zalecam uniwersalny laptop."
   \item[\textcolor{violet}{\textbullet}] \verb|utter_default| - "Nie rozumiem, czy mógłbyś to powtórzyć?"
-  \item[\textcolor{violet}{\textbullet}] \verb|utter_functions| - Potrafie bardzo wiele rzeczy, ale możesz się skupić na:
+  \item[\textcolor{violet}{\textbullet}] \verb|utter_functions| - Potrafię bardzo wiele rzeczy, ale możesz się skupić na:
     \begin{itemize}
       \item Zarządzanie zadaniami (dodawanie, usuwanie i oczywiście pokazanie)
       \item Mogę cię zmotywować
@@ -280,7 +280,7 @@ W pliku sotries można znaleźć podstawowe historie:
 \end{itemize}
 
 \subsection{Konfiguracja}
-Konfiguracja jest ustawiona po SpacyNLP, ponieważ ten projekt obsługuje
+Konfiguracja jest ustawiona pod SpacyNLP, ponieważ ten projekt obsługuje
 odpowiedzi, które mogą być z różnych dziedzin, a Spacy jest dużo lepiej
 dostosowane do takiego działania niż podstawowa konfiguracja. Do Spacy użyto
 modelu języka polskiego \verb|pl_core_news_sm|. Dodatkowo w konfiguracji
@@ -291,8 +291,8 @@ UnexpecTEDIntentPolicy(tutaj też zmieniono rozmiar wsadów) i TEDPolicy.
 
 \subsection{Zarządzanie zadaniami}
 Chatbot może dodawać, usuwać oraz pokazywać zadania. Każdy użytkownik na kanale
-discorda ma oddzielną listę, te listy oraz ich właściciele są zapisane w pliku
-tasks.json. Chatbot czyta wiadomości wysłane z discorda i dzięki tej
+Discorda ma oddzielną listę, te listy oraz ich właściciele są zapisane w pliku
+\verb|tasks.json|. Chatbot czyta wiadomości wysłane z Discorda i dzięki tej
 komunikacji może odczytać informację o nadawcy wiadomości. To pozwala na
 przypisanie oddzielnej listy zadań dla każdego użytkownika. Są tutaj używane
 trzy akcje niestandardowe:
@@ -307,7 +307,7 @@ trzy akcje niestandardowe:
         z listy.
     \item[\textcolor{violet}{\textbullet}] \verb|action_list_tasks| - Akcja odczytuje listę zadań, a jeśli
         użytkownik jeszcze nic nie dodał, to wyświetla odpowiedni komunikat.
-        W przeciwnym przypadku iteruje przez listę i wypisudodanie zadania.je kolejno zadania.
+        W przeciwnym przypadku iteruje przez listę i wypisuje kolejno zadania.
 \end{itemize}
 Przykładowa akcja:
 \begin{lstlisting}[language=Python, caption=Akcja dodawania]
@@ -387,10 +387,10 @@ Zasady:
 Kolejną funkcjonalnością chatu jest wysyłanie motywujących cytatów, kiedy
 użytkownik np. czuje się przytłoczony lub traci wenę do pracy. Za działanie
 odpowiada jedna niestandardowa akcja(\verb|action_get_quote|). Wysyła ona
-zapytanie do zewnętrznego api i w przypadku powodzenia wypisuje cytat wraz z
-jego autorem, natomiast w przeciwnym przypaku wypisuje odpowiednie
+zapytanie do zewnętrznego API i w przypadku powodzenia wypisuje cytat wraz z
+jego autorem, natomiast w przeciwnym przypadku wypisuje odpowiednie
 powiadomienie. W tej funkcjonalności występuje tylko jedna intencja z prośbą o
-zmotywowanie(\verb|offer_motivation|) oraz jeden scenariusz(Motivational quote
+zmotywowanie (\verb|offer_motivation|) oraz jeden scenariusz(Motivational quote
 generator) łączący tą akcję z niestandardową akcją.
 
 
@@ -409,7 +409,7 @@ W tej funkcjonalności chatbot zostaje doradcą zakupowym, który zadaje kilka
 pytań, na które można odpowiedzieć twierdząco lub przecząco. Na podstawie
 odpowiedzi rekomenduje odpowiedni rodzaj laptopa. Konwersację zaczyna prośba
 użytkownika o rekomendację laptopa (\verb|laptop_greet|) Jest to rozmowa, która
-pokazuje jak rasa pozwala na wybranie różnych możliwych ścieżek wyboru w
+pokazuje jak Rasa pozwala na wybranie różnych możliwych ścieżek wyboru w
 konwersacji. Wykorzystano tutaj kilka scenariuszy, co tworzy kilka różnych
 ścieżek:
 \begin{itemize}
@@ -431,26 +431,26 @@ takich zasad nazwanych \verb|laptop r1-7|.
 
 \subsection{Pomodoro}
 Ponieważ tematem projektu jest produktywny bot, wymaga on produktywnego systemu
-pracy. Jednym z najpopularniejszych i najbardziej efektywnych sytemów jest
+pracy. Jednym z najpopularniejszych i najbardziej efektywnych systemów jest
 właśnie technika Pomodoro. Polega ona na cyklach pracy lub uczenia, gdzie praca
 trwa 25 minut, a przerwa 5 minut. Aby chat mierzył czas na żywo, trzeba było
 użyć Discorda w połączeniu z Rasą. Do napisania timer'a jest używana funkcja
 \verb|start_pomodoro_timer(channel)|. Natomiast połączenie między Rasą a
-Discordem polega na wysłaniu wiadomości włączającej pomodor od chatbota, a w
+Discordem polega na wysłaniu wiadomości włączającej Pomodoro od chatbota, a w
 skrypcie Discorda ta wiadomość jest ignorowana, przez co użytkownik jej nie
-widzi i następnie jest włączana funkcja obsługująca pomodoro. Pomodoro jest
+widzi i następnie jest włączana funkcja obsługująca Pomodoro. Pomodoro jest
 inicjowane serią pytań, najpierw jest intencja, gdzie użytkownik pyta się czym
 jest Pomodoro (\verb|pomodoro|). Następnie chatbot pyta się użytkownika, czy
-chcę wypróbować pomodoro, a potem pyta się czy jest gotowy i tutaj są trzy
+chcę wypróbować Pomodoro, a potem pyta się czy jest gotowy i tutaj są trzy
 różne scenariusze:
 \begin{itemize}
-    \item[\textcolor{violet}{\textbullet}] \verb|Pomodoro timer confirm| - Użytkownik chce wypróbować pomodoro.
+    \item[\textcolor{violet}{\textbullet}] \verb|Pomodoro timer confirm| - Użytkownik chce wypróbować Pomodoro.
     \item[\textcolor{violet}{\textbullet}] \verb|Pomodoro timer deny| - Użytkownik nie chce wypróbowywać
         tej techniki.
     \item[\textcolor{violet}{\textbullet}] \verb|Pomodoro timer confirm not ready| - Użytkownik nie jest
         gotowy.
 \end{itemize}
-Dodatkowo są tutaj dwie zasady upewniające się, że pomodoro zawsze się zacznie:
+Dodatkowo są tutaj dwie zasady upewniające się, że Pomodoro zawsze się zacznie:
 \begin{itemize}
     \item[\textcolor{violet}{\textbullet}] \verb|pomodoro r1|
     \item[\textcolor{violet}{\textbullet}] \verb|pomodoro r2|
@@ -464,8 +464,5 @@ Dodatkowo są tutaj dwie zasady upewniające się, że pomodoro zawsze się zacz
 
 
 
-
-
-\listoffigures
 
 \end{document}
